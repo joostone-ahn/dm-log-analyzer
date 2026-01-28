@@ -1,0 +1,28 @@
+uploads/
+pcaps/
+jsons/
+debug/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+venv/
+env/
+.env
+.venv
+*.qmdl
+*.pcap
+*.json
+.DS_Store
+
+# Node
+node_modules/
+
+# Docker
+scat

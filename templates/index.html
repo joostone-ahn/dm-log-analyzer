@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call Flow Analyzer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        
+        .header-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            min-height: 60px;
+        }
+        
+        h1 {
+            color: #1a73e8;
+            margin: 0;
+            font-size: 28px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+        }
+        
+        input[type="file"] {
+            display: none;
+        }
+        
+        .upload-btn {
+            background: linear-gradient(135deg, #1a73e8 0%, #004db3 100%);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .upload-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(26, 115, 232, 0.4);
+        }
+        
+        .upload-btn::before {
+            content: '📁';
+            font-size: 16px;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            color: #666;
+        }
+        
+        .spinner {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #1a73e8;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error {
+            background: #ffebee;
+            color: #c62828;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: none;
+            border-left: 4px solid #c62828;
+        }
+        
+        .call-flow-container {
+            display: none;
+            margin-top: 40px;
+        }
+        
+        .flow-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .flow-diagram {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            overflow-x: auto;
+        }
+        
+        .diagram-header {
+            display: flex;
+            margin-bottom: 40px;
+            position: sticky;
+            top: 0;
+            background: white;
+            padding-bottom: 20px;
+            z-index: 100;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .time-header {
+            width: 120px;
+            flex-shrink: 0;
+        }
+        
+        .nodes-header {
+            flex: 1;
+            display: flex;
+            position: relative;
+        }
+        
+        .node-column {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .node {
+            text-align: center;
+            font-weight: bold;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            font-size: 14px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .node::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: var(--line-height, 5000px);
+            border-left: 1px dashed #ccc;
+            z-index: -1;
+        }
+        
+        .node.ue { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .node.enb { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .node.mme { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .node.gnb { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .node.amf { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        
+        .flows-area {
+            position: relative;
+            z-index: 5;
+        }
+        
+        .flow-row {
+            display: flex;
+            margin: 35px 0;
+            position: relative;
+            min-height: 50px;
+        }
+        
+        .flow-time {
+            width: 120px;
+            flex-shrink: 0;
+            font-size: 13px;
+            color: #444;
+            font-family: 'Courier New', monospace;
+            text-align: right;
+            padding-right: 15px;
+            padding-top: 20px;
+            font-weight: 500;
+        }
+        
+        .flow-area {
+            flex: 1;
+            position: relative;
+            height: 50px;
+            z-index: 5;
+        }
+        
+        .flow-arrow-container {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 2px;
+            cursor: pointer;
+            transition: all 0.2s;
+            z-index: 10;
+        }
+        
+        .flow-arrow-container:hover {
+            z-index: 50;
+        }
+        
+        .flow-arrow-container:hover .flow-label {
+            background: #e3f2fd;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .flow-arrow-line {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .flow-arrow-line.ul {
+            background: #0000FF;
+        }
+        
+        .flow-arrow-line.dl {
+            background: #f44336;
+        }
+        
+        .flow-arrow-line::after {
+            content: '';
+            position: absolute;
+            top: -6px;
+            width: 0;
+            height: 0;
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+        }
+        
+        .flow-arrow-line.ul::after {
+            right: -2px;
+            border-left: 14px solid #0000FF;
+        }
+        
+        .flow-arrow-line.dl::after {
+            left: -2px;
+            border-right: 14px solid #f44336;
+        }
+        
+        .flow-label {
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffffff;
+            padding: 8px 14px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            font-size: 12px;
+            white-space: normal;
+            word-wrap: break-word;
+            border-left: 3px solid #1a73e8;
+            border-right: 1px solid #e0e0e0;
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+            transition: all 0.2s;
+            min-width: 150px;
+            max-width: 350px;
+            text-align: center;
+            z-index: 20;
+            line-height: 1.4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .flow-label.ul {
+            border-left-color: #0000FF;
+        }
+        
+        .flow-label.dl {
+            border-left-color: #f44336;
+        }
+        
+        .flow-label strong {
+            display: block;
+            color: #333;
+            margin-bottom: 2px;
+        }
+        
+        .flow-label .nested-msg {
+            font-size: 10px;
+            color: #666;
+            font-weight: normal;
+        }
+        
+        .flow-label small {
+            color: #666;
+            font-size: 10px;
+        }
+        
+        .details-panel {
+            display: none;
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 700px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+            overflow-y: auto;
+            z-index: 1000;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+        
+        .details-panel.active {
+            display: block;
+        }
+        
+        .details-header {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(135deg, #1a73e8 0%, #004db3 100%);
+            color: white;
+            padding: 25px;
+            z-index: 10;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.2s;
+        }
+        
+        .close-btn:hover {
+            background: white;
+            color: #1a73e8;
+        }
+        
+        .details-content {
+            padding: 30px;
+        }
+        
+        .details-section {
+            margin-bottom: 25px;
+        }
+        
+        .details-section h3 {
+            color: #1a73e8;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .details-info {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .details-info p {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+        
+        .details-info strong {
+            color: #333;
+            display: inline-block;
+            min-width: 120px;
+        }
+        
+        .tree-view {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            max-height: 600px;
+            overflow-y: auto;
+            line-height: 1.8;
+            white-space: pre;
+        }
+        
+        .tree-key { color: #9cdcfe; }
+        .tree-string { color: #ce9178; }
+        .tree-number { color: #b5cea8; }
+        .tree-boolean { color: #569cd6; }
+        .tree-null { color: #569cd6; }
+        .tree-bracket { color: #ffd700; }
+        .tree-colon { color: #d4d4d4; }
+        .tree-comma { color: #d4d4d4; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-section">
+            <h1>📡 Call Flow Analyzer</h1>
+            <input type="file" id="fileInput" accept=".qmdl,.hdf,.hdf5,.dlf,.sdm,.lpd,.pcap,.pcapng">
+            <label for="fileInput" class="upload-btn">파일 업로드</label>
+        </div>
+        
+        <div class="loading">
+            <div class="spinner"></div>
+            <p style="font-size: 16px; font-weight: bold;">파일 처리 중입니다...</p>
+            <p style="font-size: 14px; color: #999; margin-top: 10px;">
+                큰 파일의 경우 수 분이 걸릴 수 있습니다.<br>
+                브라우저를 닫지 마세요.
+            </p>
+        </div>
+        
+        <div class="error"></div>
+        
+        <div class="call-flow-container">
+            <div class="flow-header">
+                <h2>Call Flow Diagram</h2>
+                <div class="flow-stats" id="flowStats"></div>
+            </div>
+            <div class="flow-diagram">
+                <div class="diagram-header">
+                    <div class="time-header"></div>
+                    <div class="nodes-header" id="nodesHeader">
+                        <div class="node-column"><div class="node ue">UE</div></div>
+                        <div class="node-column"><div class="node enb">eNB</div></div>
+                        <div class="node-column"><div class="node mme">MME</div></div>
+                        <div class="node-column"><div class="node gnb">gNB</div></div>
+                        <div class="node-column"><div class="node amf">AMF</div></div>
+                    </div>
+                </div>
+                <div class="flows-area" id="flowsContainer"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="details-panel" id="detailsPanel">
+        <div class="details-header">
+            <button class="close-btn" onclick="closeDetails()">×</button>
+            <h2>메시지 상세 정보</h2>
+            <p id="detailsTitle"></p>
+        </div>
+        <div class="details-content" id="detailsContent"></div>
+    </div>
+    
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const loading = document.querySelector('.loading');
+        const error = document.querySelector('.error');
+        const callFlowContainer = document.querySelector('.call-flow-container');
+        const flowsContainer = document.getElementById('flowsContainer');
+        const detailsPanel = document.getElementById('detailsPanel');
+        const detailsContent = document.getElementById('detailsContent');
+        const detailsTitle = document.getElementById('detailsTitle');
+        const flowStats = document.getElementById('flowStats');
+        
+        const nodeOrder = ['UE', 'eNB', 'MME', 'gNB', 'AMF'];
+        
+        fileInput.addEventListener('change', handleFileUpload);
+        
+        async function handleFileUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            const formData = new FormData();
+            formData.append('file', file);
+            
+            loading.style.display = 'block';
+            error.style.display = 'none';
+            callFlowContainer.style.display = 'none';
+            
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.error || '파일 처리 실패');
+                }
+                
+                displayCallFlow(data.flows);
+                
+            } catch (err) {
+                error.textContent = '❌ ' + err.message;
+                error.style.display = 'block';
+            } finally {
+                loading.style.display = 'none';
+            }
+        }
+        
+        function displayCallFlow(flows) {
+            flowsContainer.innerHTML = '';
+            
+            if (flows.length === 0) {
+                flowsContainer.innerHTML = '<p style="text-align:center;color:#999;padding:50px;">메시지가 없습니다.</p>';
+                callFlowContainer.style.display = 'block';
+                return;
+            }
+            
+            flowStats.textContent = `총 ${flows.length}개 메시지`;
+            
+            // 먼저 화면에 표시
+            callFlowContainer.style.display = 'block';
+            
+            // 다음 프레임에서 노드 위치 계산 및 세로선 높이 설정
+            requestAnimationFrame(() => {
+                const nodesHeader = document.getElementById('nodesHeader');
+                const nodeColumns = nodesHeader.querySelectorAll('.node-column');
+                const headerRect = nodesHeader.getBoundingClientRect();
+                
+                const nodePositions = Array.from(nodeColumns).map(col => {
+                    const rect = col.getBoundingClientRect();
+                    const center = rect.left + rect.width / 2 - headerRect.left;
+                    return center;
+                });
+                
+                console.log('Node positions:', nodePositions);
+                
+                flows.forEach((flow) => {
+                    const srcIdx = nodeOrder.indexOf(flow.source);
+                    const dstIdx = nodeOrder.indexOf(flow.destination);
+                    
+                    if (srcIdx === -1 || dstIdx === -1) {
+                        console.warn('Unknown node:', flow.source, flow.destination);
+                        return;
+                    }
+                    
+                    const flowRow = document.createElement('div');
+                    flowRow.className = 'flow-row';
+                    
+                    const flowTime = document.createElement('div');
+                    flowTime.className = 'flow-time';
+                    flowTime.textContent = flow.timestamp;
+                    
+                    const flowArea = document.createElement('div');
+                    flowArea.className = 'flow-area';
+                    
+                    // 화살표 위치 계산
+                    const startX = nodePositions[srcIdx];
+                    const endX = nodePositions[dstIdx];
+                    const leftX = Math.min(startX, endX);
+                    const width = Math.abs(endX - startX);
+                    
+                    console.log(`Flow ${flow.message}: from ${startX}px to ${endX}px, width: ${width}px`);
+                    
+                    const arrowContainer = document.createElement('div');
+                    arrowContainer.className = 'flow-arrow-container';
+                    arrowContainer.style.left = leftX + 'px';
+                    arrowContainer.style.width = width + 'px';
+                    arrowContainer.onclick = () => showDetails(flow);
+                    
+                    const arrowLine = document.createElement('div');
+                    arrowLine.className = `flow-arrow-line ${flow.direction.toLowerCase()}`;
+                    
+                    const label = document.createElement('div');
+                    label.className = `flow-label ${flow.direction.toLowerCase()}`;
+                    
+                    // 메시지에서 괄호 안의 내용을 작은 폰트로 표시
+                    let messageHtml = flow.message;
+                    const parenMatch = messageHtml.match(/^(.+?)(\s*\((.+)\))$/);
+                    if (parenMatch) {
+                        const mainMsg = parenMatch[1];
+                        const nestedMsg = parenMatch[3];
+                        messageHtml = `${mainMsg}<br><span class="nested-msg">(${nestedMsg})</span>`;
+                    }
+                    
+                    label.innerHTML = `
+                        <strong>${messageHtml}</strong>
+                        <small>${flow.source} → ${flow.destination}</small>
+                    `;
+                    
+                    arrowLine.appendChild(label);
+                    arrowContainer.appendChild(arrowLine);
+                    flowArea.appendChild(arrowContainer);
+                    
+                    flowRow.appendChild(flowTime);
+                    flowRow.appendChild(flowArea);
+                    flowsContainer.appendChild(flowRow);
+                });
+                
+                // 세로선 높이를 실제 컨텐츠 높이에 맞게 설정 (여유 공간 추가)
+                requestAnimationFrame(() => {
+                    const flowsAreaHeight = flowsContainer.offsetHeight;
+                    const nodes = document.querySelectorAll('.node');
+                    nodes.forEach(node => {
+                        const afterElement = window.getComputedStyle(node, '::after');
+                        // CSS 변수로 높이 설정 (100px 여유 공간 추가)
+                        node.style.setProperty('--line-height', (flowsAreaHeight + 100) + 'px');
+                    });
+                });
+            });
+        }
+        
+        function showDetails(flow) {
+            detailsTitle.textContent = flow.message;
+            
+            // 디버깅: 전체 details 키 확인
+            console.log('=== Flow Details Debug ===');
+            console.log('Flow message:', flow.message);
+            console.log('Flow protocol:', flow.protocol);
+            console.log('All details keys:', Object.keys(flow.details));
+            
+            // 백엔드에서 이미 프로토콜별 레이어만 추출해서 보냈으므로
+            // flow.details를 바로 사용
+            let protocolData = flow.details;
+            
+            console.log('Protocol data keys:', Object.keys(protocolData));
+            console.log('Protocol data:', protocolData);
+            
+            detailsContent.innerHTML = `
+                <div class="details-section">
+                    <h3>기본 정보</h3>
+                    <div class="details-info">
+                        <p><strong>Frame Number:</strong> ${flow.frame}</p>
+                        <p><strong>Timestamp:</strong> ${flow.timestamp}</p>
+                        <p><strong>Protocol:</strong> ${flow.protocol.toUpperCase()}</p>
+                        <p><strong>Message:</strong> ${escapeHtml(flow.message)}</p>
+                        <p><strong>Direction:</strong> ${flow.direction}</p>
+                        <p><strong>Source:</strong> ${flow.source}</p>
+                        <p><strong>Destination:</strong> ${flow.destination}</p>
+                    </div>
+                </div>
+                
+                <div class="details-section">
+                    <h3>Information Elements (IE) 트리</h3>
+                    <div class="tree-view">${renderTreeContent(protocolData)}</div>
+                </div>
+            `;
+            
+            detailsPanel.classList.add('active');
+        }
+        
+        function renderTreeContent(obj) {
+            // 최상위 객체의 괄호를 제거하고 내용만 표시
+            if (typeof obj !== 'object' || obj === null) {
+                return renderTree(obj, 0);
+            }
+            
+            if (Array.isArray(obj)) {
+                return renderTree(obj, 0);
+            }
+            
+            const keys = Object.keys(obj);
+            if (keys.length === 0) return '{}';
+            
+            let html = '';
+            keys.forEach((key, index) => {
+                // 숫자 키만 있는 경우 (문자열이 인덱스로 분리된 경우) 스킵
+                if (!isNaN(key)) {
+                    return;
+                }
+                
+                // Protocol Configuration Options의 경우 enhanced 버전 우선 표시
+                if (key === 'Protocol Configuration Options' && typeof obj[key] === 'object') {
+                    const pco = obj[key];
+                    if (pco._enhanced_items && Array.isArray(pco._enhanced_items)) {
+                        html += '<span class="tree-key">"' + escapeHtml(key) + '"</span><span class="tree-colon">:</span> ';
+                        html += '<span class="tree-bracket">[</span>\n';
+                        pco._enhanced_items.forEach((item, idx) => {
+                            html += '  <span class="tree-key">#' + idx + '</span><span class="tree-colon">:</span> ';
+                            html += renderTree(item, 2);
+                            if (idx < pco._enhanced_items.length - 1) html += '<span class="tree-comma">,</span>';
+                            html += '\n';
+                        });
+                        html += '<span class="tree-bracket">]</span>\n';
+                        
+                        // 원본 데이터도 표시 (접을 수 있게)
+                        html += '<span class="tree-key">"' + escapeHtml(key) + ' (raw)"</span><span class="tree-colon">:</span> ';
+                        html += renderTree(obj[key], 1);
+                        if (index < keys.length - 1) html += '<span class="tree-comma">,</span>';
+                        html += '\n';
+                        return;
+                    }
+                }
+                
+                html += '<span class="tree-key">"' + escapeHtml(key) + '"</span><span class="tree-colon">:</span> ';
+                html += renderTree(obj[key], 1);
+                if (index < keys.length - 1) html += '<span class="tree-comma">,</span>';
+                html += '\n';
+            });
+            return html;
+        }
+        
+        function renderTree(obj, level) {
+            if (obj === null) return '<span class="tree-null">null</span>';
+            if (obj === undefined) return '<span class="tree-null">undefined</span>';
+            
+            const indent = '  '.repeat(level);
+            
+            if (typeof obj !== 'object') {
+                if (typeof obj === 'string') {
+                    return `<span class="tree-string">"${escapeHtml(obj)}"</span>`;
+                } else if (typeof obj === 'number') {
+                    return `<span class="tree-number">${obj}</span>`;
+                } else if (typeof obj === 'boolean') {
+                    return `<span class="tree-boolean">${obj}</span>`;
+                }
+                return escapeHtml(String(obj));
+            }
+            
+            if (Array.isArray(obj)) {
+                if (obj.length === 0) return '[]';
+                
+                // 배열의 모든 요소가 같은 구조인지 확인 (반복 필드)
+                const allObjects = obj.every(item => typeof item === 'object' && !Array.isArray(item));
+                
+                let html = '<span class="tree-bracket">[</span>\n';
+                obj.forEach((item, index) => {
+                    html += indent + '  ';
+                    if (allObjects) {
+                        // 반복 필드인 경우 인덱스 표시
+                        html += `<span class="tree-key">#${index}</span><span class="tree-colon">:</span> `;
+                    }
+                    html += renderTree(item, level + 1);
+                    if (index < obj.length - 1) html += '<span class="tree-comma">,</span>';
+                    html += '\n';
+                });
+                html += indent + '<span class="tree-bracket">]</span>';
+                return html;
+            }
+            
+            const keys = Object.keys(obj);
+            if (keys.length === 0) return '{}';
+            
+            // 숫자 키만 있는 경우 문자열로 간주 (tshark가 문자열을 인덱스로 분리한 경우)
+            const allNumericKeys = keys.every(k => !isNaN(k));
+            if (allNumericKeys && keys.length > 0) {
+                // 인덱스 순서대로 정렬해서 문자열로 재구성
+                const sortedKeys = keys.sort((a, b) => parseInt(a) - parseInt(b));
+                const str = sortedKeys.map(k => obj[k]).join('');
+                return `<span class="tree-string">"${escapeHtml(str)}"</span>`;
+            }
+            
+            let html = '<span class="tree-bracket">{</span>\n';
+            keys.forEach((key, index) => {
+                // 내부 필드(_로 시작)는 숨김
+                if (key.startsWith('_')) {
+                    return;
+                }
+                
+                // PER 인코딩 메타데이터 필드 숨김 (선택적)
+                // 주석 해제하면 PER 필드가 숨겨집니다
+                // if (key.startsWith('per.')) {
+                //     return;
+                // }
+                
+                html += indent + '  <span class="tree-key">"' + escapeHtml(key) + '"</span><span class="tree-colon">:</span> ';
+                html += renderTree(obj[key], level + 1);
+                if (index < keys.length - 1) html += '<span class="tree-comma">,</span>';
+                html += '\n';
+            });
+            html += indent + '<span class="tree-bracket">}</span>';
+            return html;
+        }
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        function closeDetails() {
+            detailsPanel.classList.remove('active');
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeDetails();
+            }
+        });
+    </script>
+</body>
+</html>

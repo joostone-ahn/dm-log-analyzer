@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html { background: #ffffff; }
+body {
+  width: 720pt;
+  height: 405pt;
+  margin: 0;
+  padding: 0;
+  background: #F4F6F6;
+  font-family: Arial, sans-serif;
+}
+.header {
+  background: #1C2833;
+  color: white;
+  padding: 25pt;
+  font-size: 32pt;
+  font-weight: bold;
+}
+.content {
+  padding: 30pt 50pt;
+}
+.flow-box {
+  background: white;
+  border: 2pt solid #3498DB;
+  border-radius: 8pt;
+  padding: 15pt;
+  margin: 10pt 0;
+  font-size: 16pt;
+  color: #2C3E50;
+  text-align: center;
+}
+.arrow {
+  text-align: center;
+  font-size: 24pt;
+  color: #3498DB;
+  margin: 5pt 0;
+}
+</style>
+</head>
+<body>
+<div class="header">시스템 아키텍처</div>
+<div class="content">
+  <div class="flow-box">HDF/SDM/QMDL/PCAP 파일 업로드</div>
+  <div class="arrow">↓</div>
+  <div class="flow-box">scat: 로그 포맷 → PCAP 변환</div>
+  <div class="arrow">↓</div>
+  <div class="flow-box">tshark: PCAP → JSON 파싱 (RRC/NAS 추출)</div>
+  <div class="arrow">↓</div>
+  <div class="flow-box">Python Parser: JSON → Call Flow 데이터 생성</div>
+  <div class="arrow">↓</div>
+  <div class="flow-box">Web UI: Call Flow 다이어그램 시각화</div>
+</div>
+</body>
+</html>

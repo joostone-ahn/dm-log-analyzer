@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+.venv/
+venv/
+env/
+
+# 데이터 디렉토리 (Docker 볼륨으로 마운트)
+uploads/
+pcaps/
+jsons/
+
+# 디버그 파일
+debug/
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 문서
+*.md
+!README.md
+
+# 기타
+.DS_Store
+node_modules/
+package*.json
+*.log
+specs/
+slides/
+workspace/
+example_*.py
+*.xlsx
+*.pptx

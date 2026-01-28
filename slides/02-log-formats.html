@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html { background: #ffffff; }
+body {
+  width: 720pt;
+  height: 405pt;
+  margin: 0;
+  padding: 0;
+  background: #F4F6F6;
+  font-family: Arial, sans-serif;
+}
+.header {
+  background: #1C2833;
+  color: white;
+  padding: 25pt;
+  font-size: 32pt;
+  font-weight: bold;
+}
+.content {
+  padding: 30pt 50pt;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.format-box {
+  background: white;
+  border-left: 5pt solid #E67E22;
+  padding: 20pt;
+  margin: 10pt 0;
+  width: 45%;
+  box-shadow: 2pt 2pt 8pt rgba(0,0,0,0.1);
+}
+.format-title {
+  font-size: 22pt;
+  font-weight: bold;
+  color: #2C3E50;
+  margin-bottom: 10pt;
+}
+.format-desc {
+  font-size: 15pt;
+  color: #7F8C8D;
+  line-height: 1.5;
+}
+</style>
+</head>
+<body>
+<div class="header">지원 로그 포맷</div>
+<div class="content">
+  <div class="format-box">
+    <p class="format-title">HDF</p>
+    <p class="format-desc">Hierarchical Data Format<br/>텔레콤 테스트 로그 포맷</p>
+  </div>
+  <div class="format-box">
+    <p class="format-title">SDM</p>
+    <p class="format-desc">System Debug Manager<br/>디바이스 디버그 로그</p>
+  </div>
+  <div class="format-box">
+    <p class="format-title">QMDL</p>
+    <p class="format-desc">Qualcomm Diagnostic Log<br/>Qualcomm 칩셋 로그</p>
+  </div>
+  <div class="format-box">
+    <p class="format-title">PCAP</p>
+    <p class="format-desc">Packet Capture<br/>표준 네트워크 캡처 포맷</p>
+  </div>
+</div>
+</body>
+</html>
