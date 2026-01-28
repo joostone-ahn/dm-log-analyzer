@@ -23,53 +23,67 @@ Docker를 사용하여 Windows, macOS, Linux 모든 환경에서 실행할 수 �
 - macOS: [Docker Desktop for Mac](https://www.docker.com/products/docker-desktop/)
 - Linux: [Docker Engine](https://docs.docker.com/engine/install/)
 
-### 시스템 요구사항
-- 메모리: 최소 4GB RAM (8GB 권장)
-- 디스크: 최소 5GB 여유 공간
-
 ### scat 자동 설치
 
 Docker 이미지 빌드 시 scat이 자동으로 설치됩니다 ([fgsect/scat](https://github.com/fgsect/scat)).
-- 별도의 바이너리 파일 준비 불필요
-- PCAP 파일을 직접 업로드하면 scat 없이도 분석 가능
 
 ---
 
 ## 설치 및 실행
 
-### 빠른 시작 (자동 배포 스크립트)
+### macOS / Linux
 
-**Linux/macOS:**
 ```bash
-./deploy.sh
+docker run -d \
+  -p 8080:8080 \
+  -v $(pwd)/uploads:/app/uploads \
+  -v $(pwd)/pcaps:/app/pcaps \
+  -v $(pwd)/jsons:/app/jsons \
+  --name dm-log-analyzer \
+  ghcr.io/joostone-ahn/dm-log-analyzer:latest
 ```
 
-**Windows:**
+### Windows
+
 ```cmd
-deploy.bat
+docker run -d -p 8080:8080 -v %cd%/uploads:/app/uploads -v %cd%/pcaps:/app/pcaps -v %cd%/jsons:/app/jsons --name dm-log-analyzer ghcr.io/joostone-ahn/dm-log-analyzer:latest
 ```
 
-### 수동 실행
+### 접속
+
+브라우저에서 http://localhost:8080 접속
+
+---
+
+## Docker 관리 명령어
+
+### 컨테이너 제어
 
 ```bash
-# 1. Docker 설치 확인
-docker --version
-docker-compose --version
-
-# 2. 이미지 빌드 (최초 1회)
-docker-compose build
-
-# 3. 컨테이너 실행
+# 시작
 docker-compose up -d
 
-# 4. 실행 확인
-docker-compose ps
+# 중지
+docker-compose stop
+
+# 재시작
+docker-compose restart
+
+# 중지 및 삭제
+docker-compose down
+
+# 로그 확인
+docker-compose logs -f
 ```
 
-### 웹 브라우저 접속
+### 이미지 업데이트
 
-```
-http://localhost:8080
+```bash
+# 최신 이미지 다운로드
+docker-compose pull
+
+# 컨테이너 재시작
+docker-compose up -d
 ```
 
 ---
@@ -96,113 +110,6 @@ http://localhost:8080
 ---
 
 ## Docker 관리 명령어
-
-### 컨테이너 제어
-
-```bash
-# 시작
-docker-compose up -d
-
-# 중지
-docker-compose stop
-
-# 재시작
-docker-compose restart
-
-# 중지 및 삭제
-docker-compose down
-
-# 로그 확인
-docker-compose logs -f
-```
-
-### 이미지 관리
-
-```bash
-# 이미지 재빌드 (코드 변경 시)
-docker-compose build --no-cache
-
-# 이미지 삭제
-docker rmi dm-log-analyzer_dm-log-analyzer
-```
-
----
-
-## 문제 해결
-
-### 컨테이너가 시작되지 않음
-
-```bash
-# 로그 확인
-docker-compose logs
-```
-
-### 포트 충돌
-
-`docker-compose.yml`에서 포트 변경:
-```yaml
-ports:
-  - "8081:8080"
-```
-
-### 파일 업로드 실패
-
-```bash
-# 로그 확인
-docker-compose logs -f
-
-# 컨테이너 재시작
-docker-compose restart
-```
-
-### 메모리 부족
-
-Docker Desktop 설정에서 메모리를 8GB로 증가:
-- Settings → Resources → Memory: 8GB
-
----
-
-## 로컬 환경 실행 (Docker 없이)
-
-Docker 없이 로컬 환경에서 실행하려면:
-
-### 1. 필수 도구 설치
-
-**scat**
-```bash
-pip install git+https://github.com/fgsect/scat.git
-```
-
-**tshark**
-```bash
-# macOS
-brew install wireshark
-
-# Ubuntu/Debian
-sudo apt-get install tshark
-```
-
-### 2. Python 의존성 설치
-
-```bash
-# 가상환경 생성 및 활성화
-python3 -m venv .venv
-source .venv/bin/activate  # macOS/Linux
-# .venv\Scripts\activate  # Windows
-
-# 의존성 설치
-pip install -r requirements.txt
-```
-
-### 3. 서버 실행
-
-```bash
-python app.py
-```
-
-브라우저에서 `http://localhost:8080` 접속
-
----
 
 ## 프로젝트 구조
 
@@ -236,23 +143,12 @@ python app.py
 
 ---
 
-## 자주 묻는 질문
-
-**Q1. scat이 자동으로 설치되나요?**  
-A. 네, Docker 이미지 빌드 시 GitHub에서 자동으로 설치됩니다.
-
-**Q2. Windows에서도 작동하나요?**  
-A. 네, Docker Desktop을 설치하면 정상 작동합니다.
-
-**Q3. scat이 없으면 사용할 수 없나요?**  
-A. PCAP 파일을 직접 업로드하면 scat 없이도 분석 가능합니다.
-
-**Q4. 포트 8080이 이미 사용 중이면?**  
-A. `docker-compose.yml`에서 포트를 변경하세요 (예: 8081:8080).
-
----
-
 ## 최근 업데이트
+
+### v1.2.1 (2026-01-28)
+- **GitHub Container Registry 지원**: 자동 이미지 빌드 및 배포
+- **README 간소화**: Docker 기준으로 설치 방법 통합, macOS/Linux와 Windows 명확히 구분
+- **테스트 파일 제거**: 프로젝트 관련 파일만 Git에 포함
 
 ### v1.2.0 (2026-01-28)
 - **모듈화 리팩토링**: app.py를 기능별 모듈로 분리 (1120줄 → 90줄)
@@ -269,3 +165,18 @@ A. `docker-compose.yml`에서 포트를 변경하세요 (예: 8081:8080).
 ## 라이선스
 
 MIT License
+
+### 외부 도구 라이선스
+
+이 프로젝트는 다음 오픈소스 도구를 사용합니다:
+
+- **SCAT (Signaling Collection and Analysis Tool)**
+  - 저장소: [fgsect/scat](https://github.com/fgsect/scat)
+  - 라이선스: GNU General Public License v2.0
+  - 용도: DM 로그(HDF/SDM/QMDL) → PCAP 변환
+  - Docker 이미지 빌드 시 자동으로 설치됩니다
+
+- **tshark (Wireshark CLI)**
+  - 저장소: [Wireshark](https://www.wireshark.org/)
+  - 라이선스: GNU General Public License v2.0
+  - 용도: PCAP → JSON 파싱
