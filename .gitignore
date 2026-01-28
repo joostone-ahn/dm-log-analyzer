@@ -26,3 +26,15 @@ node_modules/
 
 # Docker
 scat
+
+# Test files
+slides/
+*.pptx
+*.xlsx
+create_presentation.js
+example_document_suite.py
+next-projects/
+workspace/
+
+# Specs (3GPP documents)
+specs/
