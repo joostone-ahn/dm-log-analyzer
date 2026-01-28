@@ -12,6 +12,8 @@
 ├── rtcp_analyze.py             # RTCP 품질 분석 스크립트
 ├── sa_session_analyze.py       # SA 세션 분석 스크립트
 ├── requirements.txt            # Python 의존성
+├── Dockerfile                  # Docker 이미지 정의
+├── docker-compose.yml          # Docker Compose 설정
 ├── templates/
 │   └── index.html             # 프론트엔드 UI (단일 페이지)
 ├── debug/                     # 디버그 및 테스트 스크립트

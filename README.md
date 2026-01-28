@@ -127,8 +127,6 @@ docker-compose up -d
 ├── jsons/                # 파싱된 JSON 파일 저장
 ├── Dockerfile            # Docker 이미지 정의
 ├── docker-compose.yml    # Docker Compose 설정
-├── deploy.sh             # Linux/macOS 배포 스크립트
-├── deploy.bat            # Windows 배포 스크립트
 └── requirements.txt      # Python 의존성
 ```
 
