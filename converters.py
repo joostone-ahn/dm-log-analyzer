@@ -69,14 +69,20 @@ def convert_pcap_to_json(pcap_path, json_path):
     if pcap_size > 50 * 1024 * 1024:  # 50MB 이상
         print(f"경고: PCAP 파일 크기가 {pcap_size / (1024*1024):.1f}MB입니다. JSON 변환에 시간이 걸릴 수 있습니다.")
     
+    # PCAP 파일 읽기 권한 확인
+    if not os.access(pcap_path, os.R_OK):
+        raise Exception(f"PCAP 파일 읽기 권한이 없습니다: {pcap_path}")
+    
     # Lua 플러그인 경로
     lua_plugin_path = os.path.join(os.path.dirname(__file__), 'wireshark', 'scat.lua')
     
-    # tshark 명령어 구성
-    cmd = ['tshark', '-r', pcap_path, '-T', 'json']
+    # tshark 명령어 구성 (no-duplicate-keys 옵션 추가)
+    cmd = ['tshark', '-r', pcap_path, '-T', 'json', '--no-duplicate-keys']
     
     # 환경 변수 복사
     env = os.environ.copy()
+    # Docker 환경에서 필요한 환경 변수 설정
+    env['HOME'] = env.get('HOME', '/tmp')
     
     # Lua 플러그인이 있으면 임시 디렉토리에 복사하고 적용
     temp_plugin_dir = None
@@ -104,12 +110,29 @@ def convert_pcap_to_json(pcap_path, json_path):
     
     try:
         # JSON 파싱 실행
+        print(f"[DEBUG] tshark 명령어: {' '.join(cmd)}")
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=None, env=env)
+        
+        # 디버그 정보 먼저 저장
+        debug_path = json_path.replace('.json', '_debug.txt')
+        with open(debug_path, 'w', encoding='utf-8') as f:
+            f.write(f"=== tshark 실행 정보 ===\n")
+            f.write(f"명령어: {' '.join(cmd)}\n")
+            f.write(f"Return code: {result.returncode}\n")
+            f.write(f"PCAP 경로: {pcap_path}\n")
+            f.write(f"PCAP 크기: {pcap_size} bytes\n")
+            f.write(f"PCAP 읽기 가능: {os.access(pcap_path, os.R_OK)}\n\n")
+            f.write(f"=== stderr ===\n{result.stderr}\n\n")
+            f.write(f"=== stdout (처음 5000자) ===\n{result.stdout[:5000]}\n")
+        
         if result.returncode != 0:
-            raise Exception(f"tshark 변환 실패: {result.stderr}")
+            raise Exception(f"tshark 변환 실패 (return code: {result.returncode}): {result.stderr}")
         
         if not result.stdout.strip():
-            raise Exception("tshark가 빈 출력을 반환했습니다.")
+            # 패킷 수 확인
+            cmd_count = ['tshark', '-r', pcap_path, '-c', '1']
+            result_count = subprocess.run(cmd_count, capture_output=True, text=True, timeout=30, env=env)
+            raise Exception(f"tshark가 빈 출력을 반환했습니다. PCAP 파일에 패킷이 있는지 확인하세요.\n패킷 확인: {result_count.stdout}\nstderr: {result_count.stderr}")
         
         if result.stdout.strip().startswith('<!'):
             raise Exception("tshark가 HTML 에러를 반환했습니다.")
@@ -118,11 +141,11 @@ def convert_pcap_to_json(pcap_path, json_path):
         try:
             data = parse_json_with_duplicate_keys(result.stdout)
         except json.JSONDecodeError as e:
-            debug_path = json_path.replace('.json', '_error.txt')
-            with open(debug_path, 'w', encoding='utf-8') as f:
+            error_debug_path = json_path.replace('.json', '_json_error.txt')
+            with open(error_debug_path, 'w', encoding='utf-8') as f:
                 f.write(f"JSON 파싱 에러: {str(e)}\n\n")
-                f.write("=== tshark 출력 (처음 2000자) ===\n")
-                f.write(result.stdout[:2000])
+                f.write("=== tshark 출력 (처음 5000자) ===\n")
+                f.write(result.stdout[:5000])
             raise Exception(f"tshark 출력이 유효한 JSON이 아닙니다: {str(e)}")
         
         # JSON 저장
@@ -145,11 +168,10 @@ def convert_pcap_to_json(pcap_path, json_path):
         except Exception as e:
             print(f"[WARNING] PDML 생성 실패 (선택사항): {e}")
         
-        # 디버깅 정보 저장
-        debug_path = json_path.replace('.json', '_debug.txt')
-        with open(debug_path, 'w', encoding='utf-8') as f:
-            f.write("=== 전체 JSON (처음 5000자) ===\n")
-            f.write(result.stdout[:5000] + "\n...\n\n")
+        # 추가 디버깅 정보 저장
+        with open(debug_path, 'a', encoding='utf-8') as f:
+            f.write("\n\n=== 파싱 성공 ===\n")
+            f.write(f"패킷 수: {len(data) if isinstance(data, list) else 'N/A'}\n\n")
             
             cmd_protocols = ['tshark', '-r', pcap_path, '-c', '5', '-V']
             result_protocols = subprocess.run(cmd_protocols, capture_output=True, text=True, timeout=30, env=env)

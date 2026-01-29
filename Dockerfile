@@ -17,6 +17,10 @@ RUN apt-get update && apt-get install -y \
     libusb-1.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
+# tshark를 non-root 사용자가 실행할 수 있도록 설정
+RUN chmod +x /usr/bin/dumpcap \
+    && setcap cap_net_raw,cap_net_admin=eip /usr/bin/dumpcap
+
 # scat 설치 (GitHub에서 직접 설치)
 # SCAT: Signaling Collection and Analysis Tool
 # https://github.com/fgsect/scat
