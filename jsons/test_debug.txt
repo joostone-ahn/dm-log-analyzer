@@ -1,0 +1,778 @@
+=== 전체 JSON (처음 5000자) ===
+[
+  {
+    "_index": "packets-2025-12-23",
+    "_score": null,
+    "_source": {
+      "layers": {
+        "frame": {
+          "frame.encap_type": "1",
+          "frame.time": "2025-12-23T00:21:24.146393000Z",
+          "frame.time_utc": "2025-12-23T00:21:24.146393000Z",
+          "frame.time_epoch": "2025-12-23T00:21:24.146393000Z",
+          "frame.offset_shift": "0.000000000",
+          "frame.time_relative": "0.000000000",
+          "frame.number": "1",
+          "frame.len": "76",
+          "frame.cap_len": "76",
+          "frame.marked": "0",
+          "frame.ignored": "0",
+          "frame.protocols": "eth:ethertype:ip:udp:gsmtap_extra:gsmtap:lte_rrc",
+          "frame.encoding": "0"
+        },
+        "eth": {
+          "eth.dst": "00:00:00:00:00:00",
+          "eth.dst_tree": {
+            "eth.dst_resolved": "00:00:00_00:00:00",
+            "eth.dst.oui": "0",
+            "eth.dst.oui_resolved": "Officially Xerox, but 0:0:0:0:0:0 is more common",
+            "eth.dst.lg": "0",
+            "eth.dst.ig": "0",
+            "eth.addr": "00:00:00:00:00:00",
+            "eth.addr_resolved": "00:00:00_00:00:00",
+            "eth.addr.oui": "0",
+            "eth.addr.oui_resolved": "Officially Xerox, but 0:0:0:0:0:0 is more common",
+            "eth.lg": "0",
+            "eth.ig": "0"
+          },
+          "eth.src": "00:00:00:00:00:00",
+          "eth.src_tree": {
+            "eth.src_resolved": "00:00:00_00:00:00",
+            "eth.src.oui": "0",
+            "eth.src.oui_resolved": "Officially Xerox, but 0:0:0:0:0:0 is more common",
+            "eth.src.lg": "0",
+            "eth.src.ig": "0",
+            "eth.addr": "00:00:00:00:00:00",
+            "eth.addr_resolved": "00:00:00_00:00:00",
+            "eth.addr.oui": "0",
+            "eth.addr.oui_resolved": "Officially Xerox, but 0:0:0:0:0:0 is more common",
+            "eth.lg": "0",
+            "eth.ig": "0"
+          },
+          "eth.type": "0x0800",
+          "eth.stream": "0"
+        },
+        "ip": {
+          "ip.version": "4",
+          "ip.hdr_len": "20",
+          "ip.dsfield": "0x00",
+          "ip.dsfield_tree": {
+            "ip.dsfield.dscp": "0",
+            "ip.dsfield.ecn": "0"
+          },
+          "ip.len": "62",
+          "ip.id": "0x0000",
+          "ip.flags": "0x02",
+          "ip.flags_tree": {
+            "ip.flags.rb": "0",
+            "ip.flags.df": "1",
+            "ip.flags.mf": "0"
+          },
+          "ip.frag_offset": "0",
+          "ip.ttl": "64",
+          "ip.proto": "17",
+          "ip.checksum": "0xffff",
+          "ip.checksum.status": "2",
+          "ip.src": "127.0.0.1",
+          "ip.addr": "127.0.0.1",
+          "ip.src_host": "127.0.0.1",
+          "ip.host": "127.0.0.1",
+          "ip.dst": "127.0.0.1",
+          "ip.addr": "127.0.0.1",
+          "ip.dst_host": "127.0.0.1",
+          "ip.host": "127.0.0.1",
+          "ip.stream": "0"
+        },
+        "udp": {
+          "udp.srcport": "13337",
+          "udp.dstport": "4729",
+          "udp.port": "13337",
+          "udp.port": "4729",
+          "udp.length": "42",
+          "udp.checksum": "0xffff",
+          "udp.checksum.status": "2",
+          "udp.stream": "0",
+          "udp.stream.pnum": "1",
+          "Timestamps": {
+            "udp.time_relative": "0.000000000",
+            "udp.time_delta": "0.000000000"
+          },
+          "udp.payload": "02:04:0d:00:0b:ea:00:00:00:00:00:a8:06:00:00:00:41:06:5c:38:01:10:00:01:dc:78:1e:f4:06:6d:22:00:d6:90"
+        },
+        "_ws.lua.fake": "",
+        "gsmtap": {
+          "gsmtap.version": "2",
+          "gsmtap.hdr_len": "16",
+          "gsmtap.type": "13",
+          "gsmtap.ts": "0",
+          "gsmtap.arfcn": "3050",
+          "gsmtap.uplink": "0",
+          "gsmtap.pcs_band": "0",
+          "gsmtap.signal_dbm": "0",
+          "gsmtap.snr_db": "0",
+          "gsmtap.frame_nr": "168",
+          "gsmtap.lte_rrc_chan_type": "6",
+          "gsmtap.antenna": "0",
+          "gsmtap.sub_slot": "0",
+          "gsmtap.res": "0"
+        },
+        "lte_rrc": {
+          "lte_rrc": "LTE Radio Resource Control (RRC) protocol",
+          "lte-rrc.PCCH_Message_element": {
+            "per.choice_index": "0",
+            "lte-rrc.pCCH_Message.message": "0",
+            "lte-rrc.pCCH_Message.message_tree": {
+              "lte-rrc.c1": "0",
+              "lte-rrc.c1_tree": {
+                "lte-rrc.paging_element": {
+                  "per.optional_field_bit": "1",
+                  "per.optional_field_bit": "0",
+                  "per.optional_field_bit": "0",
+                  "per.optional_field_bit": "0",
+                  "per.sequence_of_length": "3",
+                  "lte-rrc.pagingRecordList": "3",
+                  "lte-rrc.pagingRecordList_tree": {
+                    "Item 0": {
+                      "lte-rrc.PagingRecord_element": {
+                        "per.extension_bit": "0",
+                        "per.extension_bit": "0",
+                        "per.choice_index": "0",
+                        
+...
+
+=== 상세 프로토콜 정보 (처음 5개 패킷) ===
+Frame 1: Packet, 76 bytes on wire (608 bits), 76 bytes captured (608 bits)
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Dec 23, 2025 09:21:24.146393000 KST
+    UTC Arrival Time: Dec 23, 2025 00:21:24.146393000 UTC
+    Epoch Arrival Time: 1766449284.146393000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time since reference or first frame: 0.000000000 seconds]
+    Frame Number: 1
+    Frame Length: 76 bytes (608 bits)
+    Capture Length: 76 bytes (608 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:udp:gsmtap_extra:gsmtap:lte_rrc]
+    Character encoding: ASCII (0)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+    Destination: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 0]
+Internet Protocol Version 4, Src: 127.0.0.1, Dst: 127.0.0.1
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 62
+    Identification: 0x0000 (0)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: UDP (17)
+    Header Checksum: 0xffff [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 127.0.0.1
+    Destination Address: 127.0.0.1
+    [Stream index: 0]
+User Datagram Protocol, Src Port: 13337, Dst Port: 4729
+    Source Port: 13337
+    Destination Port: 4729
+    Length: 42
+    Checksum: 0xffff [unverified]
+    [Checksum Status: Unverified]
+    [Stream index: 0]
+    [Stream Packet Number: 1]
+    [Timestamps]
+        [Time since first frame: 0.000000000 seconds]
+        [Time since previous frame: 0.000000000 seconds]
+    UDP payload (34 bytes)
+GSM TAP Header, ARFCN: 3050 (Downlink), TS: 0, Channel: PCCH (0)
+    Version: 2
+    Header Length: 16 bytes
+    Payload Type: LTE RRC (13)
+    Time Slot: 0
+    ..00 1011 1110 1010 = ARFCN: 3050
+    .0.. .... .... .... = Uplink: 0
+    0... .... .... .... = PCS band indicator: 0
+    Signal Level: 0 dBm
+    Signal/Noise Ratio: 0 dB
+    GSM Frame Number: 168
+    Channel Type: PCCH (6)
+    Antenna Number: 0
+    Sub-Slot: 0
+    Reserved: 0
+LTE Radio Resource Control (RRC) protocol
+    PCCH-Message
+        message: c1 (0)
+            c1: paging (0)
+                paging
+                    pagingRecordList: 3 items
+                        Item 0
+                            PagingRecord
+                                ue-Identity: s-TMSI (0)
+                                    s-TMSI
+                                        mmec: 65 [bit length 8, 0110 0101 decimal value 101]
+                                        m-TMSI: c3801100 [bit length 32, 1100 0011  1000 0000  0001 0001  0000 0000 decimal value 3279950080]
+                                cn-Domain: ps (0)
+                        Item 1
+                            PagingRecord
+                                ue-Identity: s-TMSI (0)
+                                    s-TMSI
+                                        mmec: 01 [bit length 8, 0000 0001 decimal value 1]
+                                        m-TMSI: dc781ef4 [bit length 32, 1101 1100  0111 1000  0001 1110  1111 0100 decimal value 3698859764]
+                                cn-Domain: ps (0)
+                        Item 2
+                            PagingRecord
+                                ue-Identity: s-TMSI (0)
+                                    s-TMSI
+                                        mmec: 66 [bit length 8, 0110 0110 decimal value 102]
+                                        m-TMSI: d2200d69 [bit length 32, 1101 0010  0010 0000  0000 1101  0110 1001 decimal value 3525315945]
+                                cn-Domain: ps (0)
+Extra analysis of the GSMTAP protocol
+    Subtype: 6 (PCCH)
+
+Frame 2: Packet, 84 bytes on wire (672 bits), 84 bytes captured (672 bits)
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Dec 23, 2025 09:21:24.261037000 KST
+    UTC Arrival Time: Dec 23, 2025 00:21:24.261037000 UTC
+    Epoch Arrival Time: 1766449284.261037000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 114.644000 milliseconds]
+    [Time delta from previous displayed frame: 114.644000 milliseconds]
+    [Time since reference or first frame: 114.644000 milliseconds]
+    Frame Number: 2
+    Frame Length: 84 bytes (672 bits)
+    Capture Length: 84 bytes (672 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:udp:gsmtap_extra:gsmtap:lte_rrc]
+    Character encoding: ASCII (0)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+    Destination: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 0]
+Internet Protocol Version 4, Src: 127.0.0.1, Dst: 127.0.0.1
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 70
+    Identification: 0x0001 (1)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: UDP (17)
+    Header Checksum: 0xffff [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 127.0.0.1
+    Destination Address: 127.0.0.1
+    [Stream index: 0]
+User Datagram Protocol, Src Port: 13337, Dst Port: 4729
+    Source Port: 13337
+    Destination Port: 4729
+    Length: 50
+    Checksum: 0xffff [unverified]
+    [Checksum Status: Unverified]
+    [Stream index: 0]
+    [Stream Packet Number: 2]
+    [Timestamps]
+        [Time since first frame: 114.644000 milliseconds]
+        [Time since previous frame: 114.644000 milliseconds]
+    UDP payload (42 bytes)
+GSM TAP Header, ARFCN: 100 (Downlink), TS: 0, Channel: BBCH (0)
+    Version: 2
+    Header Length: 16 bytes
+    Payload Type: LTE RRC (13)
+    Time Slot: 0
+    ..00 0000 0110 0100 = ARFCN: 100
+    .0.. .... .... .... = Uplink: 0
+    0... .... .... .... = PCS band indicator: 0
+    Signal Level: 0 dBm
+    Signal/Noise Ratio: 0 dB
+    GSM Frame Number: 180
+    Channel Type: BBCH (5)
+    Antenna Number: 0
+    Sub-Slot: 0
+    Reserved: 0
+LTE Radio Resource Control (RRC) protocol
+    BCCH-DL-SCH-Message
+        message: c1 (0)
+            c1: systemInformationBlockType1 (1)
+                systemInformationBlockType1
+                    cellAccessRelatedInfo
+                        plmn-IdentityList: 1 item
+                            Item 0
+                                PLMN-IdentityInfo
+                                    plmn-Identity: 45006
+                                        mcc: 3 items
+                                            Item 0
+                                                MCC-MNC-Digit: 4
+                                            Item 1
+                                                MCC-MNC-Digit: 5
+                                            Item 2
+                                                MCC-MNC-Digit: 0
+                                        mnc: 2 items
+                                            Item 0
+                                                MCC-MNC-Digit: 0
+                                            Item 1
+                                                MCC-MNC-Digit: 6
+                                        Mobile Country Code (MCC): Korea (Rep. of) (450)
+                                        Mobile Network Code (MNC): LGU+ / 3G, 4G network (06)
+                                    cellReservedForOperatorUse: notReserved (1)
+                        trackingAreaCode: 21fb [bit length 16, 0010 0001  1111 1011 decimal value 8699]
+                        cellIdentity: 3153b110 [bit length 28, 4 LSB pad bits, 0011 0001  0101 0011  1011 0001  0001 .... decimal value 51723025]
+                        cellBarred: notBarred (1)
+                        intraFreqReselection: allowed (0)
+                        .... ..0. csg-Indication: False
+                    cellSelectionInfo
+                        q-RxLevMin: -114dBm (-57)
+                    freqBandIndicator: 1
+                    schedulingInfoList: 3 items
+                        Item 0
+                            SchedulingInfo
+                                si-Periodicity: rf16 (1)
+                                sib-MappingInfo: 0 items
+                        Item 1
+                            SchedulingInfo
+                                si-Periodicity: rf32 (2)
+                                sib-MappingInfo: 2 items
+                                    Item 0
+                                        SIB-Type: sibType3 (0)
+                                    Item 1
+                                        SIB-Type: sibType5 (2)
+                        Item 2
+                            SchedulingInfo
+                                si-Periodicity: rf64 (3)
+                                sib-MappingInfo: 1 item
+                                    Item 0
+                                        SIB-Type: sibType24-v1530 (19)
+                    si-WindowLength: ms40 (6)
+                    systemInfoValueTag: 29
+                    nonCriticalExtension
+                        nonCriticalExtension
+                            ims-EmergencySupport-r9: true (0)
+Extra analysis of the GSMTAP protocol
+    Subtype: 5 (BCCH DL-SCH)
+
+Frame 3: Packet, 95 bytes on wire (760 bits), 95 bytes captured (760 bits)
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Dec 23, 2025 09:21:24.375991000 KST
+    UTC Arrival Time: Dec 23, 2025 00:21:24.375991000 UTC
+    Epoch Arrival Time: 1766449284.375991000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 114.954000 milliseconds]
+    [Time delta from previous displayed frame: 114.954000 milliseconds]
+    [Time since reference or first frame: 229.598000 milliseconds]
+    Frame Number: 3
+    Frame Length: 95 bytes (760 bits)
+    Capture Length: 95 bytes (760 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:udp:gsmtap_extra:gsmtap:lte_rrc]
+    Character encoding: ASCII (0)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+    Destination: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 0]
+Internet Protocol Version 4, Src: 127.0.0.1, Dst: 127.0.0.1
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 81
+    Identification: 0x0002 (2)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: UDP (17)
+    Header Checksum: 0xffff [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 127.0.0.1
+    Destination Address: 127.0.0.1
+    [Stream index: 0]
+User Datagram Protocol, Src Port: 13337, Dst Port: 4729
+    Source Port: 13337
+    Destination Port: 4729
+    Length: 61
+    Checksum: 0xffff [unverified]
+    [Checksum Status: Unverified]
+    [Stream index: 0]
+    [Stream Packet Number: 3]
+    [Timestamps]
+        [Time since first frame: 229.598000 milliseconds]
+        [Time since previous frame: 114.954000 milliseconds]
+    UDP payload (53 bytes)
+GSM TAP Header, ARFCN: 100 (Downlink), TS: 0, Channel: BBCH (0)
+    Version: 2
+    Header Length: 16 bytes
+    Payload Type: LTE RRC (13)
+    Time Slot: 0
+    ..00 0000 0110 0100 = ARFCN: 100
+    .0.. .... .... .... = Uplink: 0
+    0... .... .... .... = PCS band indicator: 0
+    Signal Level: 0 dBm
+    Signal/Noise Ratio: 0 dB
+    GSM Frame Number: 192
+    Channel Type: BBCH (5)
+    Antenna Number: 0
+    Sub-Slot: 0
+    Reserved: 0
+LTE Radio Resource Control (RRC) protocol
+    BCCH-DL-SCH-Message
+        message: c1 (0)
+            c1: systemInformation (0)
+                systemInformation
+                    criticalExtensions: systemInformation-r8 (0)
+                        systemInformation-r8
+                            sib-TypeAndInfo: 1 item
+                                Item 0
+                                    sib-TypeAndInfo item: sib2 (0)
+                                        sib2
+                                            radioResourceConfigCommon
+                                                rach-ConfigCommon
+                                                    preambleInfo
+                                                        numberOfRA-Preambles: n52 (12)
+                                                        preamblesGroupAConfig
+                                                            sizeOfRA-PreamblesGroupA: n28 (6)
+                                                            messageSizeGroupA: b56 (0)
+                                                            messagePowerOffsetGroupB: dB10 (4)
+                                                    powerRampingParameters
+                                                        powerRampingStep: dB2 (1)
+                                                        preambleInitialReceivedTargetPower: dBm-104 (8)
+                                                    ra-SupervisionInfo
+                                                        preambleTransMax: n10 (6)
+                                                        ra-ResponseWindowSize: sf10 (7)
+                                                        mac-ContentionResolutionTimer: sf64 (7)
+                                                    maxHARQ-Msg3Tx: 5
+                                                bcch-Config
+                                                    modificationPeriodCoeff: n2 (0)
+                                                pcch-Config
+                                                    defaultPagingCycle: rf128 (2)
+                                                    nB: oneT (2)
+                                                prach-Config
+                                                    rootSequenceIndex: 590
+                                                    prach-ConfigInfo
+                                                        prach-ConfigIndex: 3
+                                                        .... 0... highSpeedFlag: False
+                                                        zeroCorrelationZoneConfig: 12
+                                                        prach-FreqOffset: 7
+                                                pdsch-ConfigCommon
+                                                    referenceSignalPower: 12 dBm
+                                                    p-b: 0
+                                                pusch-ConfigCommon
+                                                    pusch-ConfigBasic
+                                                        n-SB: 4
+                                                        hoppingMode: interSubFrame (0)
+                                                        pusch-HoppingOffset: 0
+                                                        ...1 .... enable64QAM: True
+                                                    ul-ReferenceSignalsPUSCH
+                                                        .... 0... groupHoppingEnabled: False
+                                                        groupAssignmentPUSCH: 0
+                                                        ..0. .... sequenceHoppingEnabled: False
+                                                        cyclicShift: 0
+                                                pucch-ConfigCommon
+                                                    deltaPUCCH-Shift: ds1 (0)
+                                                    nRB-CQI: 6
+                                                    nCS-AN: 0
+                                                    n1PUCCH-AN: 132
+                                                soundingRS-UL-ConfigCommon: release (0)
+                                                    release: NULL
+                                                uplinkPowerControlCommon
+                                                    p0-NominalPUSCH: -67 dBm
+                                                    alpha: al07 (4)
+                                                    p0-NominalPUCCH: -105 dBm
+                                                    deltaFList-PUCCH
+                                                        deltaF-PUCCH-Format1: deltaF0 (1)
+                                                        deltaF-PUCCH-Format1b: deltaF3 (1)
+                                                        deltaF-PUCCH-Format2: deltaF1 (2)
+                                                        deltaF-PUCCH-Format2a: deltaF2 (2)
+                                                        deltaF-PUCCH-Format2b: deltaF2 (2)
+                                                    deltaPreambleMsg3: 8dB (4)
+                                                ul-CyclicPrefixLength: len1 (0)
+                                                pusch-ConfigCommon-v1270
+                                                    enable64QAM-v1270: true (0)
+                                            ue-TimersAndConstants
+                                                t300: ms400 (3)
+                                                t301: ms400 (3)
+                                                t310: ms2000 (6)
+                                                n310: n20 (7)
+                                                t311: ms3000 (1)
+                                                n311: n1 (0)
+                                            freqInfo
+                                                ul-Bandwidth: n100 (5)
+                                                additionalSpectrumEmission: 1
+                                            timeAlignmentTimerCommon: infinity (7)
+                                            ac-BarringSkipForMMTELVoice-r12: true (0)
+                                            ac-BarringSkipForMMTELVideo-r12: true (0)
+                                            ac-BarringSkipForSMS-r12: true (0)
+                                            voiceServiceCauseIndication-r12: true (0)
+                                            plmn-InfoList-r15: 1 item
+                                                Item 0
+                                                    PLMN-Info-r15
+                                                        upperLayerIndication-r15: true (0)
+Extra analysis of the GSMTAP protocol
+    Subtype: 5 (BCCH DL-SCH)
+
+Frame 4: Packet, 61 bytes on wire (488 bits), 61 bytes captured (488 bits)
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Jan  6, 1980 09:00:00.000000000 KST
+    UTC Arrival Time: Jan  6, 1980 00:00:00.000000000 UTC
+    Epoch Arrival Time: 315964800.000000000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: -16788 days, 21 minutes, 24.375991000 seconds]
+    [Time delta from previous displayed frame: -16788 days, 21 minutes, 24.375991000 seconds]
+    [Time since reference or first frame: -16788 days, 21 minutes, 24.146393000 seconds]
+    Frame Number: 4
+    Frame Length: 61 bytes (488 bits)
+    Capture Length: 61 bytes (488 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:udp:gsmtap_extra:gsmtap:lte_rrc]
+    Character encoding: ASCII (0)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+    Destination: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 0]
+Internet Protocol Version 4, Src: 127.0.0.1, Dst: 127.0.0.1
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 47
+    Identification: 0x0003 (3)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: UDP (17)
+    Header Checksum: 0xffff [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 127.0.0.1
+    Destination Address: 127.0.0.1
+    [Stream index: 0]
+User Datagram Protocol, Src Port: 13337, Dst Port: 4729
+    Source Port: 13337
+    Destination Port: 4729
+    Length: 27
+    Checksum: 0xffff [unverified]
+    [Checksum Status: Unverified]
+    [Stream index: 0]
+    [Stream Packet Number: 4]
+    [Timestamps]
+        [Time since first frame: -16788 days, 21 minutes, 24.146393000 seconds]
+        [Time since previous frame: -16788 days, 21 minutes, 24.375991000 seconds]
+    UDP payload (19 bytes)
+GSM TAP Header, ARFCN: 100 (Downlink), TS: 0, Channel: BBCH (0)
+    Version: 2
+    Header Length: 16 bytes
+    Payload Type: LTE RRC (13)
+    Time Slot: 0
+    ..00 0000 0110 0100 = ARFCN: 100
+    .0.. .... .... .... = Uplink: 0
+    0... .... .... .... = PCS band indicator: 0
+    Signal Level: 0 dBm
+    Signal/Noise Ratio: 0 dB
+    GSM Frame Number: 0
+    Channel Type: BBCH (4)
+    Antenna Number: 0
+    Sub-Slot: 0
+    Reserved: 0
+LTE Radio Resource Control (RRC) protocol
+    BCCH-BCH-Message
+        message
+            dl-Bandwidth: n100 (5)
+            phich-Config
+                phich-Duration: normal (0)
+                phich-Resource: oneSixth (0)
+            systemFrameNumber: 2c [bit length 8, 0010 1100 decimal value 44]
+            schedulingInfoSIB1-BR-r13: SystemInformationBlockType1-BR is not scheduled (0)
+            ...0 .... systemInfoUnchanged-BR-r15: False
+            partEARFCN-r17: spare (0)
+                spare: 00 [bit length 2, 6 LSB pad bits, 00.. .... decimal value 0]
+            spare: 00 [bit length 1, 7 LSB pad bits, 0... .... decimal value 0]
+Extra analysis of the GSMTAP protocol
+    Subtype: 4 (BCCH BCH)
+
+Frame 5: Packet, 80 bytes on wire (640 bits), 80 bytes captured (640 bits)
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Dec 23, 2025 09:21:24.416067000 KST
+    UTC Arrival Time: Dec 23, 2025 00:21:24.416067000 UTC
+    Epoch Arrival Time: 1766449284.416067000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 16788 days, 21 minutes, 24.416067000 seconds]
+    [Time delta from previous displayed frame: 16788 days, 21 minutes, 24.416067000 seconds]
+    [Time since reference or first frame: 269.674000 milliseconds]
+    Frame Number: 5
+    Frame Length: 80 bytes (640 bits)
+    Capture Length: 80 bytes (640 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:udp:gsmtap_extra:gsmtap:lte_rrc]
+    Character encoding: ASCII (0)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+    Destination: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 0]
+Internet Protocol Version 4, Src: 127.0.0.1, Dst: 127.0.0.1
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 66
+    Identification: 0x0004 (4)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: UDP (17)
+    Header Checksum: 0xffff [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 127.0.0.1
+    Destination Address: 127.0.0.1
+    [Stream index: 0]
+User Datagram Protocol, Src Port: 13337, Dst Port: 4729
+    Source Port: 13337
+    Destination Port: 4729
+    Length: 46
+    Checksum: 0xffff [unverified]
+    [Checksum Status: Unverified]
+    [Stream index: 0]
+    [Stream Packet Number: 5]
+    [Timestamps]
+        [Time since first frame: 269.674000 milliseconds]
+        [Time since previous frame: 16788 days, 21 minutes, 24.416067000 seconds]
+    UDP payload (38 bytes)
+GSM TAP Header, ARFCN: 100 (Downlink), TS: 0, Channel: BBCH (0)
+    Version: 2
+    Header Length: 16 bytes
+    Payload Type: LTE RRC (13)
+    Time Slot: 0
+    ..00 0000 0110 0100 = ARFCN: 100
+    .0.. .... .... .... = Uplink: 0
+    0... .... .... .... = PCS band indicator: 0
+    Signal Level: 0 dBm
+    Signal/Noise Ratio: 0 dB
+    GSM Frame Number: 196
+    Channel Type: BBCH (5)
+    Antenna Number: 0
+    Sub-Slot: 0
+    Reserved: 0
+LTE Radio Resource Control (RRC) protocol
+    BCCH-DL-SCH-Message
+        message: c1 (0)
+            c1: systemInformation (0)
+                systemInformation
+                    criticalExtensions: systemInformation-r8 (0)
+                        systemInformation-r8
+                            sib-TypeAndInfo: 2 items
+                                Item 0
+                                    sib-TypeAndInfo item: sib3 (1)
+                                        sib3
+                                            cellReselectionInfoCommon
+                                                q-Hyst: dB2 (2)
+                                            cellReselectionServingFreqInfo
+                                                s-NonIntraSearch: 62dB (31)
+                                                threshServingLow: 0dB (0)
+                                                cellReselectionPriority: 6
+                                            intraFreqCellReselectionInfo
+                                                q-RxLevMin: -114dBm (-57)
+                                                s-IntraSearch: 62dB (31)
+                                                .1.. .... presenceAntennaPort1: True
+                                                neighCellConfig: No MBSFN subframes are present in all neighbour cells (1)
+                                                t-ReselectionEUTRA: 1s
+                                Item 1
+                                    sib-TypeAndInfo item: sib5 (3)
+                                        sib5
+                                            interFreqCarrierFreqList: 2 items
+                                                Item 0
+                                                    InterFreqCarrierFreqInfo
+                                                        dl-CarrierFreq: 3050
+                                                        q-RxLevMin: -114dBm (-57)
+                                                        t-ReselectionEUTRA: 2s
+                                                        threshX-High: 4dB (2)
+                                                        threshX-Low: 0dB (0)
+                                                        allowedMeasBandwidth: mbw50 (3)
+                                                        .... .1.. presenceAntennaPort1: True
+                                                        cellReselectionPriority: 6
+                                                        neighCellConfig: No MBSFN subframes are present in all neighbour cells (1)
+                                                Item 1
+                                                    InterFreqCarrierFreqInfo
+                                                        dl-CarrierFreq: 2600
+                                                        q-RxLevMin: -128dBm (-64)
+                                                        t-ReselectionEUTRA: 2s
+                                                        threshX-High: 18dB (9)
+                                                        threshX-Low: 0dB (0)
+                                                        allowedMeasBandwidth: mbw50 (3)
+                                                        1... .... presenceAntennaPort1: True
+                                                        cellReselectionPriority: 2
+                                                        neighCellConfig: No MBSFN subframes are present in all neighbour cells (1)
+Extra analysis of the GSMTAP protocol
+    Subtype: 5 (BCCH DL-SCH)
+
+
+
+=== 텍스트 출력 (처음 20개) ===
+    1 00:21:24.146393    127.0.0.1 → 127.0.0.1    76  LTE RRC PCCH   13337 4729 Paging (3 PagingRecords)
+    2 00:21:24.261037    127.0.0.1 → 127.0.0.1    84  LTE RRC DL_SCH   13337 4729 SystemInformationBlockType1
+    3 00:21:24.375991    127.0.0.1 → 127.0.0.1    95  LTE RRC DL_SCH   13337 4729 SystemInformation [ SIB2 ]
+    4 00:00:00.000000    127.0.0.1 → 127.0.0.1    61  LTE RRC BCCH_BCH   13337 4729 MasterInformationBlock (SFN=44)
+    5 00:21:24.416067    127.0.0.1 → 127.0.0.1    80  LTE RRC DL_SCH   13337 4729 SystemInformation [ SIB3 SIB5 ]
+    6 00:21:25.021385    127.0.0.1 → 127.0.0.1    84  LTE RRC DL_SCH   13337 4729 SystemInformationBlockType1
+    7 00:00:00.000000    127.0.0.1 → 127.0.0.1    61  LTE RRC BCCH_BCH   13337 4729 MasterInformationBlock (SFN=64)
+    8 00:21:26.706552    127.0.0.1 → 127.0.0.1    71  LTE RRC PCCH   13337 4729 Paging (2 PagingRecords)
+    9 00:21:27.986385    127.0.0.1 → 127.0.0.1    76  LTE RRC PCCH   13337 4729 Paging (3 PagingRecords)
+   10 00:21:29.266521    127.0.0.1 → 127.0.0.1    71  LTE RRC PCCH   13337 4729 Paging (2 PagingRecords)
+   11 00:21:30.546527    127.0.0.1 → 127.0.0.1    76  LTE RRC PCCH   13337 4729 Paging (3 PagingRecords)
+   12 00:21:31.826328    127.0.0.1 → 127.0.0.1    65  LTE RRC PCCH   13337 4729 Paging (1 PagingRecord)
+   13 00:21:33.106347    127.0.0.1 → 127.0.0.1    76  LTE RRC PCCH   13337 4729 Paging (3 PagingRecords)
+   14 00:21:33.471393    127.0.0.1 → 127.0.0.1    62  GSMTAP/NAS-EPS   13337 4729 Service request
+   15 00:21:33.471880    127.0.0.1 → 127.0.0.1    64  LTE RRC UL_CCCH   13337 4729 RRCConnectionRequest
+   16 00:21:33.534089    127.0.0.1 → 127.0.0.1    87  LTE RRC DL_CCCH   13337 4729 RRCConnectionSetup
+   17 00:21:33.538313    127.0.0.1 → 127.0.0.1    67  LTE RRC UL_DCCH/NAS-EPS   13337 4729 RRCConnectionSetupComplete, Service request
+   18 00:21:33.579020    127.0.0.1 → 127.0.0.1    61  LTE RRC DL_DCCH   13337 4729 SecurityModeCommand
+   19 00:21:33.580956    127.0.0.1 → 127.0.0.1    60  LTE RRC UL_DCCH   13337 4729 SecurityModeComplete
+   20 00:21:33.581278    127.0.0.1 → 127.0.0.1    207  LTE RRC DL_DCCH   13337 4729 RRCConnectionReconfiguration

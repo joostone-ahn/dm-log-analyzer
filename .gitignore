@@ -1,6 +1,6 @@
 uploads/
-pcaps/
-jsons/
+# pcaps/ - 샘플 PCAP 파일 포함
+# jsons/ - 샘플 JSON 파일 포함
 debug/
 __pycache__/
 *.pyc
@@ -16,9 +16,9 @@ venv/
 env/
 .env
 .venv
-*.qmdl
-*.pcap
-*.json
+# *.qmdl - 샘플 파일 제외
+# *.pcap - 샘플 파일 제외
+# *.json - 샘플 파일 제외
 .DS_Store
 
 # Node

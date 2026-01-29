@@ -1,0 +1,314 @@
+{
+  "total_packets": 175,
+  "parsed_flows": 174,
+  "sample_debug": [
+    {
+      "frame": "1",
+      "layers_keys": [
+        "frame",
+        "eth",
+        "ip",
+        "udp",
+        "_ws.lua.fake",
+        "gsmtap",
+        "lte_rrc",
+        "gsmtap_extra"
+      ],
+      "msg_info": {
+        "protocol": "lte-rrc",
+        "name": "paging",
+        "raw_key": "lte-rrc.PCCH_Message_element",
+        "direction": "DL",
+        "channel": "PCCH_Message"
+      }
+    },
+    {
+      "frame": "2",
+      "layers_keys": [
+        "frame",
+        "eth",
+        "ip",
+        "udp",
+        "_ws.lua.fake",
+        "gsmtap",
+        "lte_rrc",
+        "gsmtap_extra"
+      ],
+      "msg_info": {
+        "protocol": "lte-rrc",
+        "name": "systemInformationBlockType1",
+        "raw_key": "lte-rrc.BCCH_DL_SCH_Message_element",
+        "direction": "DL",
+        "channel": "BCCH_DL_SCH_Message"
+      }
+    },
+    {
+      "frame": "3",
+      "layers_keys": [
+        "frame",
+        "eth",
+        "ip",
+        "udp",
+        "_ws.lua.fake",
+        "gsmtap",
+        "lte_rrc",
+        "gsmtap_extra"
+      ],
+      "msg_info": {
+        "protocol": "lte-rrc",
+        "name": "SystemInformation (SIB2)",
+        "raw_key": "lte-rrc.BCCH_DL_SCH_Message_element",
+        "direction": "DL",
+        "channel": "BCCH_DL_SCH_Message"
+      }
+    },
+    {
+      "frame": "4",
+      "layers_keys": [
+        "frame",
+        "eth",
+        "ip",
+        "udp",
+        "_ws.lua.fake",
+        "gsmtap",
+        "lte_rrc",
+        "gsmtap_extra"
+      ],
+      "msg_info": {
+        "protocol": "lte-rrc",
+        "name": "BCCH_BCH_Message",
+        "raw_key": "lte-rrc.BCCH_BCH_Message_element",
+        "direction": "DL",
+        "channel": "BCCH_BCH_Message"
+      }
+    },
+    {
+      "frame": "5",
+      "layers_keys": [
+        "frame",
+        "eth",
+        "ip",
+        "udp",
+        "_ws.lua.fake",
+        "gsmtap",
+        "lte_rrc",
+        "gsmtap_extra"
+      ],
+      "msg_info": {
+        "protocol": "lte-rrc",
+        "name": "SystemInformation (SIB3 SIB5)",
+        "raw_key": "lte-rrc.BCCH_DL_SCH_Message_element",
+        "direction": "DL",
+        "channel": "BCCH_DL_SCH_Message"
+      }
+    }
+  ],
+  "nr_rrc_debug": [
+    {
+      "frame": "116",
+      "message": "RRCReconfiguration",
+      "layers_keys": [
+        "frame",
+        "eth",
+        "ip",
+        "udp",
+        "_ws.lua.fake",
+        "gsmtap_extra",
+        "nr-rrc",
+        "nr-rrc.RRCReconfiguration_element"
+      ],
+      "nr_rrc_type": "list",
+      "nr_rrc_content": "Array with 2 items: ['NR Radio Resource Control (RRC) protocol', 'NR Radio Resource Control (RRC) protocol']",
+      "nr_rrc_element_keys": [
+        "nr-rrc.RRCReconfiguration_element"
+      ]
+    },
+    {
+      "frame": "118",
+      "message": "RRCReconfigurationComplete",
+      "layers_keys": [
+        "frame",
+        "eth",
+        "ip",
+        "udp",
+        "_ws.lua.fake",
+        "gsmtap_extra",
+        "nr-rrc",
+        "nr-rrc.RRCReconfigurationComplete_element"
+      ],
+      "nr_rrc_type": "list",
+      "nr_rrc_content": "Array with 2 items: ['NR Radio Resource Control (RRC) protocol', 'NR Radio Resource Control (RRC) protocol']",
+      "nr_rrc_element_keys": [
+        "nr-rrc.RRCReconfigurationComplete_element"
+      ]
+    },
+    {
+      "frame": "123",
+      "message": "RRCReconfiguration",
+      "layers_keys": [
+        "frame",
+        "eth",
+        "ip",
+        "udp",
+        "_ws.lua.fake",
+        "gsmtap_extra",
+        "nr-rrc",
+        "nr-rrc.RRCReconfiguration_element"
+      ],
+      "nr_rrc_type": "list",
+      "nr_rrc_content": "Array with 2 items: ['NR Radio Resource Control (RRC) protocol', 'NR Radio Resource Control (RRC) protocol']",
+      "nr_rrc_element_keys": [
+        "nr-rrc.RRCReconfiguration_element"
+      ]
+    },
+    {
+      "frame": "124",
+      "message": "RRCReconfigurationComplete",
+      "layers_keys": [
+        "frame",
+        "eth",
+        "ip",
+        "udp",
+        "_ws.lua.fake",
+        "gsmtap_extra",
+        "nr-rrc",
+        "nr-rrc.RRCReconfigurationComplete_element"
+      ],
+      "nr_rrc_type": "list",
+      "nr_rrc_content": "Array with 2 items: ['NR Radio Resource Control (RRC) protocol', 'NR Radio Resource Control (RRC) protocol']",
+      "nr_rrc_element_keys": [
+        "nr-rrc.RRCReconfigurationComplete_element"
+      ]
+    },
+    {
+      "frame": "131",
+      "message": "RRCReconfiguration",
+      "layers_keys": [
+        "frame",
+        "eth",
+        "ip",
+        "udp",
+        "_ws.lua.fake",
+        "gsmtap_extra",
+        "nr-rrc",
+        "nr-rrc.RRCReconfiguration_element"
+      ],
+      "nr_rrc_type": "list",
+      "nr_rrc_content": "Array with 2 items: ['NR Radio Resource Control (RRC) protocol', 'NR Radio Resource Control (RRC) protocol']",
+      "nr_rrc_element_keys": [
+        "nr-rrc.RRCReconfiguration_element"
+      ]
+    },
+    {
+      "frame": "132",
+      "message": "RRCReconfigurationComplete",
+      "layers_keys": [
+        "frame",
+        "eth",
+        "ip",
+        "udp",
+        "_ws.lua.fake",
+        "gsmtap_extra",
+        "nr-rrc",
+        "nr-rrc.RRCReconfigurationComplete_element"
+      ],
+      "nr_rrc_type": "list",
+      "nr_rrc_content": "Array with 2 items: ['NR Radio Resource Control (RRC) protocol', 'NR Radio Resource Control (RRC) protocol']",
+      "nr_rrc_element_keys": [
+        "nr-rrc.RRCReconfigurationComplete_element"
+      ]
+    },
+    {
+      "frame": "142",
+      "message": "RRCReconfiguration",
+      "layers_keys": [
+        "frame",
+        "eth",
+        "ip",
+        "udp",
+        "_ws.lua.fake",
+        "gsmtap_extra",
+        "nr-rrc",
+        "nr-rrc.RRCReconfiguration_element"
+      ],
+      "nr_rrc_type": "list",
+      "nr_rrc_content": "Array with 2 items: ['NR Radio Resource Control (RRC) protocol', 'NR Radio Resource Control (RRC) protocol']",
+      "nr_rrc_element_keys": [
+        "nr-rrc.RRCReconfiguration_element"
+      ]
+    },
+    {
+      "frame": "144",
+      "message": "RRCReconfigurationComplete",
+      "layers_keys": [
+        "frame",
+        "eth",
+        "ip",
+        "udp",
+        "_ws.lua.fake",
+        "gsmtap_extra",
+        "nr-rrc",
+        "nr-rrc.RRCReconfigurationComplete_element"
+      ],
+      "nr_rrc_type": "list",
+      "nr_rrc_content": "Array with 2 items: ['NR Radio Resource Control (RRC) protocol', 'NR Radio Resource Control (RRC) protocol']",
+      "nr_rrc_element_keys": [
+        "nr-rrc.RRCReconfigurationComplete_element"
+      ]
+    },
+    {
+      "frame": "162",
+      "message": "RRCReconfiguration",
+      "layers_keys": [
+        "frame",
+        "eth",
+        "ip",
+        "udp",
+        "_ws.lua.fake",
+        "gsmtap_extra",
+        "nr-rrc",
+        "nr-rrc.RRCReconfiguration_element"
+      ],
+      "nr_rrc_type": "list",
+      "nr_rrc_content": "Array with 2 items: ['NR Radio Resource Control (RRC) protocol', 'NR Radio Resource Control (RRC) protocol']",
+      "nr_rrc_element_keys": [
+        "nr-rrc.RRCReconfiguration_element"
+      ]
+    },
+    {
+      "frame": "163",
+      "message": "RRCReconfigurationComplete",
+      "layers_keys": [
+        "frame",
+        "eth",
+        "ip",
+        "udp",
+        "_ws.lua.fake",
+        "gsmtap_extra",
+        "nr-rrc",
+        "nr-rrc.RRCReconfigurationComplete_element"
+      ],
+      "nr_rrc_type": "list",
+      "nr_rrc_content": "Array with 2 items: ['NR Radio Resource Control (RRC) protocol', 'NR Radio Resource Control (RRC) protocol']",
+      "nr_rrc_element_keys": [
+        "nr-rrc.RRCReconfigurationComplete_element"
+      ]
+    },
+    {
+      "frame": "165",
+      "message": "measurementReport",
+      "layers_keys": [
+        "frame",
+        "eth",
+        "ip",
+        "udp",
+        "_ws.lua.fake",
+        "gsmtap_extra",
+        "nr-rrc"
+      ],
+      "nr_rrc_type": "list",
+      "nr_rrc_content": "Array with 2 items: ['NR Radio Resource Control (RRC) protocol', {'nr-rrc.UL_DCCH_Message_element': {'per.choice_index': '0', 'nr-rrc.message': '0', 'nr-rrc.message_tree': {'per.choice_index': '0', 'nr-rrc.c1': '0', 'nr-rrc.c1_tree': {'nr-rrc.measurementReport_element': {'per.choice_index': '0', 'nr-rrc.criticalExtensions': '0', 'nr-rrc.criticalExtensions_tree': {'nr-rrc.measurementReport_element': {'per.optional_field_bit': ['0', '0'], 'nr-rrc.measResults_element': {'per.extension_bit': ['0', '0'], 'per.optional_field_bit': '1', 'nr-rrc.measId': '4', 'per.sequence_of_length': '1', 'nr-rrc.measResultServingMOList': '1', 'nr-rrc.measResultServingMOList_tree': {'Item 0': {'nr-rrc.MeasResultServMO_element': {'per.extension_bit': '0', 'per.optional_field_bit': '0', 'nr-rrc.servCellId': '16', 'nr-rrc.measResultServingCell_element': {'per.extension_bit': '0', 'per.optional_field_bit': '1', 'nr-rrc.physCellId': '180', 'nr-rrc.measResult_element': {'per.optional_field_bit': '1', 'nr-rrc.cellResults_element': {'per.optional_field_bit': ['1', '0'], 'nr-rrc.resultsSSB_Cell_element': {'per.optional_field_bit': ['1', '1', '1'], 'nr-rrc.measQuantityResults.rsrp': '83', 'nr-rrc.measQuantityResults.rsrq': '65', 'nr-rrc.measQuantityResults.sinr': '74'}}, 'nr-rrc.rsIndexResults_element': {'per.optional_field_bit': ['1', '0'], 'per.sequence_of_length': '4', 'nr-rrc.resultsSSB_Indexes': '4', 'nr-rrc.resultsSSB_Indexes_tree': {'Item 0': {'nr-rrc.ResultsPerSSB_Index_element': {'per.optional_field_bit': '1', 'nr-rrc.ssb_Index': '0', 'nr-rrc.ssb_Results_element': {'per.optional_field_bit': ['1', '1', '1'], 'nr-rrc.measQuantityResults.rsrp': '84', 'nr-rrc.measQuantityResults.rsrq': '65', 'nr-rrc.measQuantityResults.sinr': '74'}}}, 'Item 1': {'nr-rrc.ResultsPerSSB_Index_element': {'per.optional_field_bit': '1', 'nr-rrc.ssb_Index': '2', 'nr-rrc.ssb_Results_element': {'per.optional_field_bit': ['1', '1', '1'], 'nr-rrc.measQuantityResults.rsrp': '84', 'nr-rrc.measQuantityResults.rsrq': '65', 'nr-rrc.measQuantityResults.sinr': '71'}}}, 'Item 2': {'nr-rrc.ResultsPerSSB_Index_element': {'per.optional_field_bit': '1', 'nr-rrc.ssb_Index': '1', 'nr-rrc.ssb_Results_element': {'per.optional_field_bit': ['1', '1', '1'], 'nr-rrc.measQuantityResults.rsrp': '81', 'nr-rrc.measQuantityResults.rsrq': '66', 'nr-rrc.measQuantityResults.sinr': '82'}}}, 'Item 3': {'nr-rrc.ResultsPerSSB_Index_element': {'per.optional_field_bit': '1', 'nr-rrc.ssb_Index': '3', 'nr-rrc.ssb_Results_element': {'per.optional_field_bit': ['1', '1', '1'], 'nr-rrc.measQuantityResults.rsrp': '81', 'nr-rrc.measQuantityResults.rsrq': '65', 'nr-rrc.measQuantityResults.sinr': '66'}}}}}}}}}}, 'nr-rrc.measResultNeighCells': '0', 'nr-rrc.measResultNeighCells_tree': {'per.sequence_of_length': '6', 'nr-rrc.measResultListNR': '6', 'nr-rrc.measResultListNR_tree': {'Item 0': {'nr-rrc.MeasResultNR_element': {'per.extension_bit': '0', 'per.optional_field_bit': '1', 'nr-rrc.physCellId': '904', 'nr-rrc.measResult_element': {'per.optional_field_bit': '1', 'nr-rrc.cellResults_element': {'per.optional_field_bit': ['1', '0'], 'nr-rrc.resultsSSB_Cell_element': {'per.optional_field_bit': ['1', '1', '1'], 'nr-rrc.measQuantityResults.rsrp': '74', 'nr-rrc.measQuantityResults.rsrq': '52', 'nr-rrc.measQuantityResults.sinr': '34'}}, 'nr-rrc.rsIndexResults_element': {'per.optional_field_bit': ['1', '0'], 'per.sequence_of_length': '2', 'nr-rrc.resultsSSB_Indexes': '2', 'nr-rrc.resultsSSB_Indexes_tree': {'Item 0': {'nr-rrc.ResultsPerSSB_Index_element': {'per.optional_field_bit': '1', 'nr-rrc.ssb_Index': '3', 'nr-rrc.ssb_Results_element': {'per.optional_field_bit': ['1', '1', '1'], 'nr-rrc.measQuantityResults.rsrp': '74', 'nr-rrc.measQuantityResults.rsrq': '55', 'nr-rrc.measQuantityResults.sinr': '36'}}}, 'Item 1': {'nr-rrc.ResultsPerSSB_Index_element': {'per.optional_field_bit': '1', 'nr-rrc.ssb_Index': '0', 'nr-rrc.ssb_Results_element': {'per.optional_field_bit': ['1', '1', '1'], 'nr-rrc.measQuantityResults.rsrp': '72', 'nr-rrc.measQuantityResults.rsrq': '46', 'nr-rrc.measQuantityResults.sinr': '26'}}}}}}}}, 'Item 1': {'nr-rrc.MeasResultNR_element': {'per.extension_bit': '0', 'per.optional_field_bit': '1', 'nr-rrc.physCellId': '945', 'nr-rrc.measResult_element': {'per.optional_field_bit': '1', 'nr-rrc.cellResults_element': {'per.optional_field_bit': ['1', '0'], 'nr-rrc.resultsSSB_Cell_element': {'per.optional_field_bit': ['1', '1', '1'], 'nr-rrc.measQuantityResults.rsrp': '65', 'nr-rrc.measQuantityResults.rsrq': '44', 'nr-rrc.measQuantityResults.sinr': '26'}}, 'nr-rrc.rsIndexResults_element': {'per.optional_field_bit': ['1', '0'], 'per.sequence_of_length': '1', 'nr-rrc.resultsSSB_Indexes': '1', 'nr-rrc.resultsSSB_Indexes_tree': {'Item 0': {'nr-rrc.ResultsPerSSB_Index_element': {'per.optional_field_bit': '1', 'nr-rrc.ssb_Index': '1', 'nr-rrc.ssb_Results_element': {'per.optional_field_bit': ['1', '1', '1'], 'nr-rrc.measQuantityResults.rsrp': '65', 'nr-rrc.measQuantityResults.rsrq': '44', 'nr-rrc.measQuantityResults.sinr': '26'}}}}}}}}, 'Item 2': {'nr-rrc.MeasResultNR_element': {'per.extension_bit': '0', 'per.optional_field_bit': '1', 'nr-rrc.physCellId': '172', 'nr-rrc.measResult_element': {'per.optional_field_bit': '1', 'nr-rrc.cellResults_element': {'per.optional_field_bit': ['1', '0'], 'nr-rrc.resultsSSB_Cell_element': {'per.optional_field_bit': ['1', '1', '1'], 'nr-rrc.measQuantityResults.rsrp': '49', 'nr-rrc.measQuantityResults.rsrq': '58', 'nr-rrc.measQuantityResults.sinr': '47'}}, 'nr-rrc.rsIndexResults_element': {'per.optional_field_bit': ['1', '0'], 'per.sequence_of_length': '1', 'nr-rrc.resultsSSB_Indexes': '1', 'nr-rrc.resultsSSB_Indexes_tree': {'Item 0': {'nr-rrc.ResultsPerSSB_Index_element': {'per.optional_field_bit': '1', 'nr-rrc.ssb_Index': '5', 'nr-rrc.ssb_Results_element': {'per.optional_field_bit': ['1', '1', '1'], 'nr-rrc.measQuantityResults.rsrp': '49', 'nr-rrc.measQuantityResults.rsrq': '58', 'nr-rrc.measQuantityResults.sinr': '45'}}}}}}}}, 'Item 3': {'nr-rrc.MeasResultNR_element': {'per.extension_bit': '0', 'per.optional_field_bit': '1', 'nr-rrc.physCellId': '73', 'nr-rrc.measResult_element': {'per.optional_field_bit': '1', 'nr-rrc.cellResults_element': {'per.optional_field_bit': ['1', '0'], 'nr-rrc.resultsSSB_Cell_element': {'per.optional_field_bit': ['1', '1', '1'], 'nr-rrc.measQuantityResults.rsrp': '37', 'nr-rrc.measQuantityResults.rsrq': '44', 'nr-rrc.measQuantityResults.sinr': '29'}}, 'nr-rrc.rsIndexResults_element': {'per.optional_field_bit': ['1', '0'], 'per.sequence_of_length': '1', 'nr-rrc.resultsSSB_Indexes': '1', 'nr-rrc.resultsSSB_Indexes_tree': {'Item 0': {'nr-rrc.ResultsPerSSB_Index_element': {'per.optional_field_bit': '1', 'nr-rrc.ssb_Index': '5', 'nr-rrc.ssb_Results_element': {'per.optional_field_bit': ['1', '1', '1'], 'nr-rrc.measQuantityResults.rsrp': '38', 'nr-rrc.measQuantityResults.rsrq': '44', 'nr-rrc.measQuantityResults.sinr': '28'}}}}}}}}, 'Item 4': {'nr-rrc.MeasResultNR_element': {'per.extension_bit': '0', 'per.optional_field_bit': '1', 'nr-rrc.physCellId': '484', 'nr-rrc.measResult_element': {'per.optional_field_bit': '1', 'nr-rrc.cellResults_element': {'per.optional_field_bit': ['1', '0'], 'nr-rrc.resultsSSB_Cell_element': {'per.optional_field_bit': ['1', '1', '1'], 'nr-rrc.measQuantityResults.rsrp': '32', 'nr-rrc.measQuantityResults.rsrq': '40', 'nr-rrc.measQuantityResults.sinr': '25'}}, 'nr-rrc.rsIndexResults_element': {'per.optional_field_bit': ['1', '0'], 'per.sequence_of_length': '1', 'nr-rrc.resultsSSB_Indexes': '1', 'nr-rrc.resultsSSB_Indexes_tree': {'Item 0': {'nr-rrc.ResultsPerSSB_Index_element': {'per.optional_field_bit': '1', 'nr-rrc.ssb_Index': '6', 'nr-rrc.ssb_Results_element': {'per.optional_field_bit': ['1', '1', '1'], 'nr-rrc.measQuantityResults.rsrp': '32', 'nr-rrc.measQuantityResults.rsrq': '40', 'nr-rrc.measQuantityResults.sinr': '25'}}}}}}}}, 'Item 5': {'nr-rrc.MeasResultNR_element': {'per.extension_bit': '0', 'per.optional_field_bit': '1', 'nr-rrc.physCellId': '481', 'nr-rrc.measResult_element': {'per.optional_field_bit': '1', 'nr-rrc.cellResults_element': {'per.optional_field_bit': ['1', '0'], 'nr-rrc.resultsSSB_Cell_element': {'per.optional_field_bit': ['1', '1', '1'], 'nr-rrc.measQuantityResults.rsrp': '27', 'nr-rrc.measQuantityResults.rsrq': '39', 'nr-rrc.measQuantityResults.sinr': '29'}}, 'nr-rrc.rsIndexResults_element': {'per.optional_field_bit': ['1', '0'], 'per.sequence_of_length': '1', 'nr-rrc.resultsSSB_Indexes': '1', 'nr-rrc.resultsSSB_Indexes_tree': {'Item 0': {'nr-rrc.ResultsPerSSB_Index_element': {'per.optional_field_bit': '1', 'nr-rrc.ssb_Index': '6', 'nr-rrc.ssb_Results_element': {'per.optional_field_bit': ['1', '1', '1'], 'nr-rrc.measQuantityResults.rsrp': '27', 'nr-rrc.measQuantityResults.rsrq': '39', 'nr-rrc.measQuantityResults.sinr': '29'}}}}}}}}}}}}}}}}}}]",
+      "nr_rrc_element_keys": []
+    }
+  ]
+}

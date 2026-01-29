@@ -1,0 +1,101 @@
+{
+  "total_packets": 182,
+  "parsed_flows": 2,
+  "sample_debug": [
+    {
+      "frame": "1",
+      "layers_keys": [
+        "frame",
+        "eth",
+        "ip",
+        "udp",
+        "_ws.lua.fake",
+        "gsmtap",
+        "lte_rrc",
+        "gsmtap_extra"
+      ],
+      "msg_info": {
+        "protocol": "unknown",
+        "name": "Unknown",
+        "raw_key": null,
+        "direction": "UL"
+      }
+    },
+    {
+      "frame": "2",
+      "layers_keys": [
+        "frame",
+        "eth",
+        "ip",
+        "udp",
+        "_ws.lua.fake",
+        "gsmtap",
+        "lte_rrc",
+        "gsmtap_extra"
+      ],
+      "msg_info": {
+        "protocol": "unknown",
+        "name": "Unknown",
+        "raw_key": null,
+        "direction": "UL"
+      }
+    },
+    {
+      "frame": "3",
+      "layers_keys": [
+        "frame",
+        "eth",
+        "ip",
+        "udp",
+        "_ws.lua.fake",
+        "gsmtap",
+        "lte_rrc",
+        "gsmtap_extra"
+      ],
+      "msg_info": {
+        "protocol": "unknown",
+        "name": "Unknown",
+        "raw_key": null,
+        "direction": "UL"
+      }
+    },
+    {
+      "frame": "4",
+      "layers_keys": [
+        "frame",
+        "eth",
+        "ip",
+        "udp",
+        "_ws.lua.fake",
+        "gsmtap",
+        "lte_rrc",
+        "gsmtap_extra"
+      ],
+      "msg_info": {
+        "protocol": "unknown",
+        "name": "Unknown",
+        "raw_key": null,
+        "direction": "UL"
+      }
+    },
+    {
+      "frame": "5",
+      "layers_keys": [
+        "frame",
+        "eth",
+        "ip",
+        "udp",
+        "_ws.lua.fake",
+        "gsmtap",
+        "lte_rrc",
+        "gsmtap_extra"
+      ],
+      "msg_info": {
+        "protocol": "unknown",
+        "name": "Unknown",
+        "raw_key": null,
+        "direction": "UL"
+      }
+    }
+  ]
+}

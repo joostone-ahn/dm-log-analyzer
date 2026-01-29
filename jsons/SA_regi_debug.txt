@@ -1,0 +1,1268 @@
+=== tshark 실행 정보 ===
+명령어: tshark -r pcaps/SA_regi.pcap -T json --no-duplicate-keys -X lua_script:/var/folders/s7/nn98b3_x4bv7_jjbvnn58zz00000gp/T/wireshark_plugins_okqfyouf/scat.lua
+Return code: 0
+PCAP 경로: pcaps/SA_regi.pcap
+PCAP 크기: 8066 bytes
+PCAP 읽기 가능: True
+JSON 시작 라인: 0
+
+=== stderr ===
+tshark: Lua: Error during loading:
+..._jjbvnn58zz00000gp/T/wireshark_plugins_okqfyouf/scat.lua:4: bad argument #2 to 'Proto' (Proto_new: there cannot be two protocols with the same description)
+stack traceback:
+	[C]: in global 'Proto'
+	..._jjbvnn58zz00000gp/T/wireshark_plugins_okqfyouf/scat.lua:4: in main chunk
+
+
+=== stdout (처음 5000자) ===
+[
+  {
+    "_index": "packets-2020-05-27",
+    "_score": null,
+    "_source": {
+      "layers": {
+        "frame": {
+          "frame.encap_type": "1",
+          "frame.time": "2020-05-27T01:41:44.990659000Z",
+          "frame.time_utc": "2020-05-27T01:41:44.990659000Z",
+          "frame.time_epoch": "2020-05-27T01:41:44.990659000Z",
+          "frame.offset_shift": "0.000000000",
+          "frame.time_relative": "0.000000000",
+          "frame.number": "1",
+          "frame.len": "223",
+          "frame.cap_len": "223",
+          "frame.marked": "0",
+          "frame.ignored": "0",
+          "frame.protocols": "eth:ethertype:ip:udp:gsmtap_extra:nr-rrc",
+          "frame.encoding": "0"
+        },
+        "eth": {
+          "eth.dst": "00:00:00:00:00:00",
+          "eth.dst_tree": {
+            "eth.dst_resolved": "00:00:00_00:00:00",
+            "eth.dst.oui": "0",
+            "eth.dst.oui_resolved": "Officially Xerox, but 0:0:0:0:0:0 is more common",
+            "eth.dst.lg": "0",
+            "eth.dst.ig": "0",
+            "eth.addr": "00:00:00:00:00:00",
+            "eth.addr_resolved": "00:00:00_00:00:00",
+            "eth.addr.oui": "0",
+            "eth.addr.oui_resolved": "Officially Xerox, but 0:0:0:0:0:0 is more common",
+            "eth.lg": "0",
+            "eth.ig": "0"
+          },
+          "eth.src": "00:00:00:00:00:00",
+          "eth.src_tree": {
+            "eth.src_resolved": "00:00:00_00:00:00",
+            "eth.src.oui": "0",
+            "eth.src.oui_resolved": "Officially Xerox, but 0:0:0:0:0:0 is more common",
+            "eth.src.lg": "0",
+            "eth.src.ig": "0",
+            "eth.addr": "00:00:00:00:00:00",
+            "eth.addr_resolved": "00:00:00_00:00:00",
+            "eth.addr.oui": "0",
+            "eth.addr.oui_resolved": "Officially Xerox, but 0:0:0:0:0:0 is more common",
+            "eth.lg": "0",
+            "eth.ig": "0"
+          },
+          "eth.type": "0x0800",
+          "eth.stream": "0"
+        },
+        "ip": {
+          "ip.version": "4",
+          "ip.hdr_len": "20",
+          "ip.dsfield": "0x00",
+          "ip.dsfield_tree": {
+            "ip.dsfield.dscp": "0",
+            "ip.dsfield.ecn": "0"
+          },
+          "ip.len": "209",
+          "ip.id": "0x0000",
+          "ip.flags": "0x02",
+          "ip.flags_tree": {
+            "ip.flags.rb": "0",
+            "ip.flags.df": "1",
+            "ip.flags.mf": "0"
+          },
+          "ip.frag_offset": "0",
+          "ip.ttl": "64",
+          "ip.proto": "17",
+          "ip.checksum": "0xffff",
+          "ip.checksum.status": "2",
+          "ip.src": "127.0.0.1",
+          "ip.addr": [
+            "127.0.0.1",
+            "127.0.0.1"
+          ],
+          "ip.src_host": "127.0.0.1",
+          "ip.host": [
+            "127.0.0.1",
+            "127.0.0.1"
+          ],
+          "ip.dst": "127.0.0.1",
+          "ip.dst_host": "127.0.0.1",
+          "ip.stream": "0"
+        },
+        "udp": {
+          "udp.srcport": "13337",
+          "udp.dstport": "4729",
+          "udp.port": [
+            "13337",
+            "4729"
+          ],
+          "udp.length": "189",
+          "udp.checksum": "0xffff",
+          "udp.checksum.status": "2",
+          "udp.stream": "0",
+          "udp.stream.pnum": "1",
+          "Timestamps": {
+            "udp.time_relative": "0.000000000",
+            "udp.time_delta": "0.000000000"
+          },
+          "udp.payload": "03:00:00:0a:05:03:00:02:00:00:00:0c:00:00:00:00:5e:cd:c5:58:3b:0c:41:b8:00:02:00:04:00:09:9f:60:00:05:00:02:00:ee:ff:fe:7e:80:0c:02:0a:28:01:80:00:00:4b:10:2e:03:bb:00:a0:68:30:01:04:16:08:6c:55:07:98:03:9c:01:61:09:a1:80:00:00:5b:0c:65:a2:6b:fa:47:70:40:20:00:02:22:83:f2:02:15:00:08:00:00:88:a0:00:80:41:b4:28:1b:11:0a:46:03:19:54:8e:39:15:87:43:1c:80:20:40:00:05:b1:c3:8c:b4:4d:a9:94:00:e9:99:ab:2b:6e:02:00:09:de:0c:dc:29:b8:93:71:a6:e3:cd:c8:9b:83:53:12:a6:c0:5f:03:b9:9b:a8:04:15:01:d0:04:a6:29:b9:8a:00:00:00:00:00:00:00:00:00:00:00:00"
+        },
+        "_ws.lua.fake": "",
+        "gsmtap_extra": {
+          "gsmtapv3.version": "3",
+          "gsmtapv3.hdr_len": "10",
+          "gsmtapv3.type": "0x0503",
+          "gsmtapv3.sub_type": "0x0002",
+          "gsmtapv3.tlv_type": [
+            "0",
+            "2",
+            "5"
+          ],
+          "gsmtapv3.tlv_len": [
+            "12",
+            "4",
+            "2"
+          ],
+          "gsmtapv3.packet_timestamp": "2020-05-27T01:41:44.990659000Z",
+          "gsmtapv3.channel_number": "630624",
+          "gsmtapv3.multiplex": "238"
+        },
+        "nr-rrc": [
+          "NR Radio Resource Control (RRC) protocol",
+          {
+            "nr-rrc.BCCH_DL_SCH_Message_element": {
+              "per.choice_index": "0",
+              "nr-rrc.message": "0",
+              "nr-rrc.message_tree": {
+                "per.choice_index": "1",
+                "nr-rrc.c1": "1",
+                "nr-rrc.c1_tree": {
+                  "nr-rrc": "NR Radio Resource Control (RRC) protocol",
+                  "nr-rrc.syst
+
+=== JSON 출력 (처음 5000자) ===
+[
+  {
+    "_index": "packets-2020-05-27",
+    "_score": null,
+    "_source": {
+      "layers": {
+        "frame": {
+          "frame.encap_type": "1",
+          "frame.time": "2020-05-27T01:41:44.990659000Z",
+          "frame.time_utc": "2020-05-27T01:41:44.990659000Z",
+          "frame.time_epoch": "2020-05-27T01:41:44.990659000Z",
+          "frame.offset_shift": "0.000000000",
+          "frame.time_relative": "0.000000000",
+          "frame.number": "1",
+          "frame.len": "223",
+          "frame.cap_len": "223",
+          "frame.marked": "0",
+          "frame.ignored": "0",
+          "frame.protocols": "eth:ethertype:ip:udp:gsmtap_extra:nr-rrc",
+          "frame.encoding": "0"
+        },
+        "eth": {
+          "eth.dst": "00:00:00:00:00:00",
+          "eth.dst_tree": {
+            "eth.dst_resolved": "00:00:00_00:00:00",
+            "eth.dst.oui": "0",
+            "eth.dst.oui_resolved": "Officially Xerox, but 0:0:0:0:0:0 is more common",
+            "eth.dst.lg": "0",
+            "eth.dst.ig": "0",
+            "eth.addr": "00:00:00:00:00:00",
+            "eth.addr_resolved": "00:00:00_00:00:00",
+            "eth.addr.oui": "0",
+            "eth.addr.oui_resolved": "Officially Xerox, but 0:0:0:0:0:0 is more common",
+            "eth.lg": "0",
+            "eth.ig": "0"
+          },
+          "eth.src": "00:00:00:00:00:00",
+          "eth.src_tree": {
+            "eth.src_resolved": "00:00:00_00:00:00",
+            "eth.src.oui": "0",
+            "eth.src.oui_resolved": "Officially Xerox, but 0:0:0:0:0:0 is more common",
+            "eth.src.lg": "0",
+            "eth.src.ig": "0",
+            "eth.addr": "00:00:00:00:00:00",
+            "eth.addr_resolved": "00:00:00_00:00:00",
+            "eth.addr.oui": "0",
+            "eth.addr.oui_resolved": "Officially Xerox, but 0:0:0:0:0:0 is more common",
+            "eth.lg": "0",
+            "eth.ig": "0"
+          },
+          "eth.type": "0x0800",
+          "eth.stream": "0"
+        },
+        "ip": {
+          "ip.version": "4",
+          "ip.hdr_len": "20",
+          "ip.dsfield": "0x00",
+          "ip.dsfield_tree": {
+            "ip.dsfield.dscp": "0",
+            "ip.dsfield.ecn": "0"
+          },
+          "ip.len": "209",
+          "ip.id": "0x0000",
+          "ip.flags": "0x02",
+          "ip.flags_tree": {
+            "ip.flags.rb": "0",
+            "ip.flags.df": "1",
+            "ip.flags.mf": "0"
+          },
+          "ip.frag_offset": "0",
+          "ip.ttl": "64",
+          "ip.proto": "17",
+          "ip.checksum": "0xffff",
+          "ip.checksum.status": "2",
+          "ip.src": "127.0.0.1",
+          "ip.addr": [
+            "127.0.0.1",
+            "127.0.0.1"
+          ],
+          "ip.src_host": "127.0.0.1",
+          "ip.host": [
+            "127.0.0.1",
+            "127.0.0.1"
+          ],
+          "ip.dst": "127.0.0.1",
+          "ip.dst_host": "127.0.0.1",
+          "ip.stream": "0"
+        },
+        "udp": {
+          "udp.srcport": "13337",
+          "udp.dstport": "4729",
+          "udp.port": [
+            "13337",
+            "4729"
+          ],
+          "udp.length": "189",
+          "udp.checksum": "0xffff",
+          "udp.checksum.status": "2",
+          "udp.stream": "0",
+          "udp.stream.pnum": "1",
+          "Timestamps": {
+            "udp.time_relative": "0.000000000",
+            "udp.time_delta": "0.000000000"
+          },
+          "udp.payload": "03:00:00:0a:05:03:00:02:00:00:00:0c:00:00:00:00:5e:cd:c5:58:3b:0c:41:b8:00:02:00:04:00:09:9f:60:00:05:00:02:00:ee:ff:fe:7e:80:0c:02:0a:28:01:80:00:00:4b:10:2e:03:bb:00:a0:68:30:01:04:16:08:6c:55:07:98:03:9c:01:61:09:a1:80:00:00:5b:0c:65:a2:6b:fa:47:70:40:20:00:02:22:83:f2:02:15:00:08:00:00:88:a0:00:80:41:b4:28:1b:11:0a:46:03:19:54:8e:39:15:87:43:1c:80:20:40:00:05:b1:c3:8c:b4:4d:a9:94:00:e9:99:ab:2b:6e:02:00:09:de:0c:dc:29:b8:93:71:a6:e3:cd:c8:9b:83:53:12:a6:c0:5f:03:b9:9b:a8:04:15:01:d0:04:a6:29:b9:8a:00:00:00:00:00:00:00:00:00:00:00:00"
+        },
+        "_ws.lua.fake": "",
+        "gsmtap_extra": {
+          "gsmtapv3.version": "3",
+          "gsmtapv3.hdr_len": "10",
+          "gsmtapv3.type": "0x0503",
+          "gsmtapv3.sub_type": "0x0002",
+          "gsmtapv3.tlv_type": [
+            "0",
+            "2",
+            "5"
+          ],
+          "gsmtapv3.tlv_len": [
+            "12",
+            "4",
+            "2"
+          ],
+          "gsmtapv3.packet_timestamp": "2020-05-27T01:41:44.990659000Z",
+          "gsmtapv3.channel_number": "630624",
+          "gsmtapv3.multiplex": "238"
+        },
+        "nr-rrc": [
+          "NR Radio Resource Control (RRC) protocol",
+          {
+            "nr-rrc.BCCH_DL_SCH_Message_element": {
+              "per.choice_index": "0",
+              "nr-rrc.message": "0",
+              "nr-rrc.message_tree": {
+                "per.choice_index": "1",
+                "nr-rrc.c1": "1",
+                "nr-rrc.c1_tree": {
+                  "nr-rrc": "NR Radio Resource Control (RRC) protocol",
+                  "nr-rrc.syst
+
+
+=== 파싱 성공 ===
+패킷 수: 48
+
+=== 상세 프로토콜 정보 (처음 5개 패킷) ===
+Frame 1: Packet, 223 bytes on wire (1784 bits), 223 bytes captured (1784 bits)
+    Encapsulation type: Ethernet (1)
+    Arrival Time: May 27, 2020 10:41:44.990659000 KST
+    UTC Arrival Time: May 27, 2020 01:41:44.990659000 UTC
+    Epoch Arrival Time: 1590543704.990659000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time since reference or first frame: 0.000000000 seconds]
+    Frame Number: 1
+    Frame Length: 223 bytes (1784 bits)
+    Capture Length: 223 bytes (1784 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:udp:gsmtap_extra:nr-rrc]
+    Character encoding: ASCII (0)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+    Destination: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 0]
+Internet Protocol Version 4, Src: 127.0.0.1, Dst: 127.0.0.1
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 209
+    Identification: 0x0000 (0)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: UDP (17)
+    Header Checksum: 0xffff [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 127.0.0.1
+    Destination Address: 127.0.0.1
+    [Stream index: 0]
+User Datagram Protocol, Src Port: 13337, Dst Port: 4729
+    Source Port: 13337
+    Destination Port: 4729
+    Length: 189
+    Checksum: 0xffff [unverified]
+    [Checksum Status: Unverified]
+    [Stream index: 0]
+    [Stream Packet Number: 1]
+    [Timestamps]
+        [Time since first frame: 0.000000000 seconds]
+        [Time since previous frame: 0.000000000 seconds]
+    UDP payload (181 bytes)
+Extra analysis of the GSMTAP protocol
+    Version: 3
+    Maximum header length: 40 bytes
+    Type: 0x0503 (NR RRC)
+    Subtype: 0x0002 (BCCH DL-SCH)
+    Type: Packet timestamp (0x0000)
+    Length: 12
+    Packet timestamp: May 27, 2020 10:41:44.990659000 KST
+    Type: Channel number (0x0002)
+    Length: 4
+    Channel number: 630624
+    Type: Multiplexing information (BSIC/PSC/PCI) (0x0005)
+    Length: 2
+    Multiplexing information (BSIC/PSC/PCI): 238
+NR Radio Resource Control (RRC) protocol
+    BCCH-DL-SCH-Message
+        message: c1 (0)
+            c1: systemInformationBlockType1 (1)
+                systemInformationBlockType1
+                    cellSelectionInfo
+                        q-RxLevMin: -128dBm (-64)
+                    cellAccessRelatedInfo
+                        plmn-IdentityInfoList: 1 item
+                            Item 0
+                                PLMN-IdentityInfo
+                                    plmn-IdentityList: 1 item
+                                        Item 0
+                                            PLMN-Identity
+                                                mcc: 3 items
+                                                    Item 0
+                                                        MCC-MNC-Digit: 4
+                                                    Item 1
+                                                        MCC-MNC-Digit: 5
+                                                    Item 2
+                                                        MCC-MNC-Digit: 0
+                                                mnc: 2 items
+                                                    Item 0
+                                                        MCC-MNC-Digit: 0
+                                                    Item 1
+                                                        MCC-MNC-Digit: 6
+                                    trackingAreaCode: 000001 [bit length 24, 0000 0000  0000 0000  0000 0001 decimal value 1]
+                                    cellIdentity: 2c40b80ee0 [bit length 36, 4 LSB pad bits, 0010 1100  0100 0000  1011 1000  0000 1110  1110 .... decimal value 11879022830]
+                                    cellReservedForOperatorUse: notReserved (1)
+                    connEstFailureControl
+                        connEstFailCount: n1 (0)
+                        connEstFailOffsetValidity: s30 (0)
+                        connEstFailOffset: 1 dB
+                    si-SchedulingInfo
+                        schedulingInfoList: 2 items
+                            Item 0
+                                SchedulingInfo
+                                    si-BroadcastStatus: notBroadcasting (1)
+                                    si-Periodicity: rf32 (2)
+                                    sib-MappingInfo: 2 items
+                                        Item 0
+                                            SIB-TypeInfo
+                                                type: sibType2 (0)
+                                                valueTag: 0
+                                        Item 1
+                                            SIB-TypeInfo
+                                                type: sibType3 (1)
+                                                valueTag: 0
+                            Item 1
+                                SchedulingInfo
+                                    si-BroadcastStatus: notBroadcasting (1)
+                                    si-Periodicity: rf64 (3)
+                                    sib-MappingInfo: 1 item
+                                        Item 0
+                                            SIB-TypeInfo
+                                                type: sibType5 (3)
+                                                valueTag: 12
+                        si-WindowLength: s160 (5)
+                        si-RequestConfig
+                            si-RequestPeriod: four (2)
+                            si-RequestResources: 2 items
+                                Item 0
+                                    SI-RequestResources
+                                        ra-PreambleStartIndex: 38
+                                        ra-AssociationPeriodIndex: 0
+                                        ra-ssb-OccasionMaskIndex: 0
+                                Item 1
+                                    SI-RequestResources
+                                        ra-PreambleStartIndex: 39
+                                        ra-AssociationPeriodIndex: 0
+                                        ra-ssb-OccasionMaskIndex: 0
+                    servingCellConfigCommon
+                        downlinkConfigCommon
+                            frequencyInfoDL
+                                frequencyBandList: 1 item
+                                    Item 0
+                                        NR-MultiBandInfo
+                                            freqBandIndicatorNR: 78
+                                offsetToPointA: 192 PRBs
+                                scs-SpecificCarrierList: 1 item
+                                    Item 0
+                                        SCS-SpecificCarrier
+                                            offsetToCarrier: 0
+                                            subcarrierSpacing: kHz30 (1)
+                                            carrierBandwidth: 217
+                            initialDownlinkBWP
+                                genericParameters
+                                    locationAndBandwidth: 13009
+                                    subcarrierSpacing: kHz30 (1)
+                                pdcch-ConfigCommon: setup (1)
+                                    setup
+                                        controlResourceSetZero: 10
+                                        searchSpaceZero: 4
+                                        commonSearchSpaceList: 2 items
+                                            Item 0
+                                                SearchSpace
+                                                    searchSpaceId: 1
+                                                    controlResourceSetId: 0
+                                                    monitoringSlotPeriodicityAndOffset: sl1 (0)
+                                                        sl1: NULL
+                                                    monitoringSymbolsWithinSlot: 8000 [bit length 14, 2 LSB pad bits, 1000 0000  0000 00.. decimal value 8192]
+                                                    nrofCandidates
+                                                        aggregationLevel1: n0 (0)
+                                                        aggregationLevel2: n0 (0)
+                                                        aggregationLevel4: n4 (4)
+                                                        aggregationLevel8: n2 (2)
+                                                        aggregationLevel16: n1 (1)
+                                                    searchSpaceType: common (0)
+                                                        common
+                                                            dci-Format0-0-AndFormat1-0
+                                            Item 1
+                                                SearchSpace
+                                                    searchSpaceId: 8
+                                                    controlResourceSetId: 0
+                                                    monitoringSlotPeriodicityAndOffset: sl40 (8)
+                                                        sl40: 21
+                                                    duration: 2 slots
+                                                    monitoringSymbolsWithinSlot: 8000 [bit length 14, 2 LSB pad bits, 1000 0000  0000 00.. decimal value 8192]
+                                                    nrofCandidates
+                                                        aggregationLevel1: n0 (0)
+                                                        aggregationLevel2: n0 (0)
+                                                        aggregationLevel4: n4 (4)
+                                                        aggregationLevel8: n2 (2)
+                                                        aggregationLevel16: n1 (1)
+                                                    searchSpaceType: common (0)
+                                                        common
+                                                            dci-Format0-0-AndFormat1-0
+                                        searchSpaceSIB1: 0
+                                        searchSpaceOtherSystemInformation: 8
+                                        pagingSearchSpace: 1
+                                        ra-SearchSpace: 1
+                                pdsch-ConfigCommon: setup (1)
+                                    setup
+                                        pdsch-TimeDomainAllocationList: 11 items
+                                            Item 0
+                                                PDSCH-TimeDomainResourceAllocation
+                                                    mappingType: typeA (0)
+                                                    startSymbolAndLength: 40
+                                            Item 1
+                                                PDSCH-TimeDomainResourceAllocation
+                                                    mappingType: typeA (0)
+                                                    startSymbolAndLength: 54
+                                            Item 2
+                                                PDSCH-TimeDomainResourceAllocation
+                                                    mappingType: typeA (0)
+                                                    startSymbolAndLength: 68
+                                            Item 3
+                                                PDSCH-TimeDomainResourceAllocation
+                                                    mappingType: typeA (0)
+                                                    startSymbolAndLength: 82
+                                            Item 4
+                                                PDSCH-TimeDomainResourceAllocation
+                                                    mappingType: typeA (0)
+                                                    startSymbolAndLength: 96
+                                            Item 5
+                                                PDSCH-TimeDomainResourceAllocation
+                                                    mappingType: typeA (0)
+                                                    startSymbolAndLength: 99
+                                            Item 6
+                                                PDSCH-TimeDomainResourceAllocation
+                                                    mappingType: typeA (0)
+                                                    startSymbolAndLength: 85
+                                            Item 7
+                                                PDSCH-TimeDomainResourceAllocation
+                                                    mappingType: typeA (0)
+                                                    startSymbolAndLength: 71
+                                            Item 8
+                                                PDSCH-TimeDomainResourceAllocation
+                                                    mappingType: typeA (0)
+                                                    startSymbolAndLength: 57
+                                            Item 9
+                                                PDSCH-TimeDomainResourceAllocation
+                                                    mappingType: typeA (0)
+                                                    startSymbolAndLength: 43
+                                            Item 10
+                                                PDSCH-TimeDomainResourceAllocation
+                                                    mappingType: typeA (0)
+                                                    startSymbolAndLength: 29
+                            bcch-Config
+                                modificationPeriodCoeff: n2 (0)
+                            pcch-Config
+                                defaultPagingCycle: rf128 (2)
+                                nAndPagingFrameOffset: halfT (1)
+                                    halfT: 1
+                                ns: one (2)
+                                firstPDCCH-MonitoringOccasionOfPO: sCS60KHZoneT-SCS30KHZhalfT-SCS15KHZquarterT (2)
+                                    sCS60KHZoneT-SCS30KHZhalfT-SCS15KHZquarterT: 1 item
+                                        Item 0
+                                            sCS60KHZoneT-SCS30KHZhalfT-SCS15KHZquarterT item: 8
+                        uplinkConfigCommon
+                            frequencyInfoUL
+                                scs-SpecificCarrierList: 1 item
+                                    Item 0
+                                        SCS-SpecificCarrier
+                                            offsetToCarrier: 0
+                                            subcarrierSpacing: kHz30 (1)
+                                            carrierBandwidth: 217
+                                p-Max: 26 dBm
+                            initialUplinkBWP
+                                genericParameters
+                                    locationAndBandwidth: 13009
+                                    subcarrierSpacing: kHz30 (1)
+                                rach-ConfigCommon: setup (1)
+                                    setup
+                                        rach-ConfigGeneric
+                                            prach-ConfigurationIndex: 202
+                                            msg1-FDM: one (0)
+                                            msg1-FrequencyStart: 3
+                                            zeroCorrelationZoneConfig: 10
+                                            preambleReceivedTargetPower: -100 dBm
+                                            preambleTransMax: n10 (6)
+                                            powerRampingStep: dB4 (2)
+                                            ra-ResponseWindow: sl20 (5)
+                                        totalNumberOfRA-Preambles: 38
+                                        ssb-perRACH-OccasionAndCB-PreamblesPerSSB: one (3)
+                                            one: n28 (6)
+                                        ra-ContentionResolutionTimer: sf64 (7)
+                                        rsrp-ThresholdSSB: SS-RSRP < -156dBm (0)
+                                        prach-RootSequenceIndex: l139 (1)
+                                            l139: 0
+                                        msg1-SubcarrierSpacing: kHz15 (0)
+                                        restrictedSetConfig: unrestrictedSet (0)
+                                pusch-ConfigCommon: setup (1)
+                                    setup
+                                        pusch-TimeDomainAllocationList: 8 items
+                                            Item 0
+                                                PUSCH-TimeDomainResourceAllocation
+                                                    k2: 1
+                                                    mappingType: typeB (1)
+                                                    startSymbolAndLength: 27
+                                            Item 1
+                                                PUSCH-TimeDomainResourceAllocation
+                                                    k2: 2
+                                                    mappingType: typeB (1)
+                                                    startSymbolAndLength: 27
+                                            Item 2
+                                                PUSCH-TimeDomainResourceAllocation
+                                                    k2: 4
+                                                    mappingType: typeB (1)
+                                                    startSymbolAndLength: 27
+                                            Item 3
+                                                PUSCH-TimeDomainResourceAllocation
+                                                    k2: 6
+                                                    mappingType: typeB (1)
+                                                    startSymbolAndLength: 27
+                                            Item 4
+                                                PUSCH-TimeDomainResourceAllocation
+                                                    k2: 7
+                                                    mappingType: typeB (1)
+                                                    startSymbolAndLength: 27
+                                            Item 5
+                                                PUSCH-TimeDomainResourceAllocation
+                                                    k2: 8
+                                                    mappingType: typeB (1)
+                                                    startSymbolAndLength: 27
+                                            Item 6
+                                                PUSCH-TimeDomainResourceAllocation
+                                                    k2: 1
+                                                    mappingType: typeB (1)
+                                                    startSymbolAndLength: 41
+                                            Item 7
+                                                PUSCH-TimeDomainResourceAllocation
+                                                    k2: 4
+                                                    mappingType: typeB (1)
+                                                    startSymbolAndLength: 41
+                                        msg3-DeltaPreamble: 8dB (4)
+                                        p0-NominalWithGrant: -74 dBm
+                                pucch-ConfigCommon: setup (1)
+                                    setup
+                                        pucch-ResourceCommon: 12
+                                        pucch-GroupHopping: neither (0)
+                                        hoppingId: 238
+                                        p0-nominal: -100 dBm
+                            timeAlignmentTimerCommon: infinity (7)
+                        n-TimingAdvanceOffset: n25600 (1)
+                        ssb-PositionsInBurst
+                            inOneGroup: 80 [bit length 8, 1000 0000 decimal value 128]
+                        ssb-PeriodicityServingCell: ms20 (2)
+                        tdd-UL-DL-ConfigurationCommon
+                            referenceSubcarrierSpacing: kHz30 (1)
+                            pattern1
+                                dl-UL-TransmissionPeriodicity: ms2p5 (5)
+                                nrofDownlinkSlots: 3
+                                nrofDownlinkSymbols: 10
+                                nrofUplinkSlots: 1
+                                nrofUplinkSymbols: 2
+                        ss-PBCH-BlockPower: 16 dBm
+                    ims-EmergencySupport: true (0)
+                    ue-TimersAndConstants
+                        t300: ms1000 (5)
+                        t301: ms200 (1)
+                        t310: ms1000 (5)
+                        n310: n10 (6)
+                        t311: ms10000 (3)
+                        n311: n1 (0)
+                        t319: ms1000 (5)
+
+Frame 2: Packet, 124 bytes on wire (992 bits), 124 bytes captured (992 bits)
+    Encapsulation type: Ethernet (1)
+    Arrival Time: May 27, 2020 10:41:45.019314000 KST
+    UTC Arrival Time: May 27, 2020 01:41:45.019314000 UTC
+    Epoch Arrival Time: 1590543705.019314000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 28.655000 milliseconds]
+    [Time delta from previous displayed frame: 28.655000 milliseconds]
+    [Time since reference or first frame: 28.655000 milliseconds]
+    Frame Number: 2
+    Frame Length: 124 bytes (992 bits)
+    Capture Length: 124 bytes (992 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:udp:gsmtap_extra:nas-5gs]
+    Character encoding: ASCII (0)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+    Destination: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 0]
+Internet Protocol Version 4, Src: 127.0.0.1, Dst: 127.0.0.1
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 110
+    Identification: 0x0001 (1)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: UDP (17)
+    Header Checksum: 0xffff [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 127.0.0.1
+    Destination Address: 127.0.0.1
+    [Stream index: 0]
+User Datagram Protocol, Src Port: 13337, Dst Port: 4729
+    Source Port: 13337
+    Destination Port: 4729
+    Length: 90
+    Checksum: 0xffff [unverified]
+    [Checksum Status: Unverified]
+    [Stream index: 0]
+    [Stream Packet Number: 2]
+    [Timestamps]
+        [Time since first frame: 28.655000 milliseconds]
+        [Time since previous frame: 28.655000 milliseconds]
+    UDP payload (82 bytes)
+Extra analysis of the GSMTAP protocol
+    Version: 3
+    Maximum header length: 36 bytes
+    Type: 0x0504 (NAS-5GS)
+    Subtype: 0x0000 (NAS/5GS plain)
+    Type: Packet timestamp (0x0000)
+    Length: 12
+    Packet timestamp: May 27, 2020 10:41:45.019314000 KST
+    Type: Channel number (0x0002)
+    Length: 4
+    Channel number: 0
+Non-Access-Stratum 5GS (NAS)PDU
+    Plain NAS 5GS Message
+        Extended protocol discriminator: 5G mobility management messages (126)
+        0000 .... = Spare Half Octet: 0
+        .... 0000 = Security header type: Plain NAS message, not security protected (0)
+        Message type: Registration request (0x41)
+        5GS registration type
+            .... 1... = Follow-On Request bit (FOR): Follow-on request pending
+            .... .001 = 5GS registration type: initial registration (1)
+        NAS key set identifier
+            0... .... = Type of security context flag (TSC): Native security context (for KSIAMF)
+            .000 .... = NAS key set identifier: 0
+        5GS mobile identity
+            Length: 11
+            1... .... = Spare: 1
+            .1.. .... = Spare: 1
+            ..1. .... = Spare: 1
+            ...1 .... = Spare: 1
+            .... 0... = Spare: 0
+            .... .010 = Type of identity: 5G-GUTI (2)
+            Mobile Country Code (MCC): Korea (Rep. of) (450)
+            Mobile Network Code (MNC): LGU+ / 3G, 4G network (06)
+            AMF Region ID: 12
+            0001 1110 11.. .... = AMF Set ID: 123
+            ..00 1100 = AMF Pointer: 12
+            5G-TMSI: 201408705 (0x0c0140c1)
+        5GMM capability
+            Element ID: 0x10
+            Length: 1
+            0... .... = Service gap control (SGC): Not supported
+            .0.. .... = IP header compression for control plane CIoT 5GS optimization (5G-IPHC-CP CIoT): Not supported
+            ..0. .... = N3 data transfer (N3 data): Not supported
+            ...0 .... = Control plane CIoT 5GS optimization (5G-CP CIoT): Not supported
+            .... 0... = Restriction on use of enhanced coverage support (RestrictEC): Not supported
+            .... .0.. = LTE Positioning Protocol (LPP) capability: Not supported
+            .... ..0. = ATTACH REQUEST message containing PDN CONNECTIVITY REQUEST message for handover support (HO attach): Not supported
+            .... ...0 = EPC NAS supported (S1 mode): Not supported
+        UE security capability
+            Element ID: 0x2e
+            Length: 2
+            1... .... = 5G-EA0: Supported
+            .1.. .... = 128-5G-EA1: Supported
+            ..1. .... = 128-5G-EA2: Supported
+            ...1 .... = 128-5G-EA3: Supported
+            .... 0... = 5G-EA4: Not supported
+            .... .0.. = 5G-EA5: Not supported
+            .... ..0. = 5G-EA6: Not supported
+            .... ...0 = 5G-EA7: Not supported
+            0... .... = 5G-IA0: Not supported
+            .1.. .... = 128-5G-IA1: Supported
+            ..1. .... = 128-5G-IA2: Supported
+            ...1 .... = 128-5G-IA3: Supported
+            .... 0... = 5G-IA4: Not supported
+            .... .0.. = 5G-IA5: Not supported
+            .... ..0. = 5G-IA6: Not supported
+            .... ...0 = 5G-IA7: Not supported
+        NSSAI - Requested NSSAI
+            Element ID: 0x2f
+            Length: 5
+            S-NSSAI 1
+                Length: 4
+                Slice/service type (SST): URLLC (2)
+                Slice differentiator (SD): 1
+        5GS tracking area identity - Last visited registered TAI
+            Element ID: 0x52
+            Mobile Country Code (MCC): Korea (Rep. of) (450)
+            Mobile Network Code (MNC): LGU+ / 3G, 4G network (06)
+            TAC: 1
+        UE's usage setting
+            Element ID: 0x18
+            Length: 1
+            .... 0... = Spare: 0
+            .... .0.. = Spare: 0
+            .... ..0. = Spare: 0
+            .... ...1 = UE's usage setting: Data centric
+        LADN indication
+            Element ID: 0x74
+            Length: 0
+        Network slicing indication
+            1001 .... = Element ID: 0x9-
+            .... 0... = Spare: 0
+            .... .0.. = Spare: 0
+            .... ..0. = Default configured NSSAI indication (DCNI): Requested NSSAI not created from default configured NSSAI
+            .... ...0 = Network slicing subscription change indication (NSSCI): Not Changed
+        5GS update type
+            Element ID: 0x53
+            Length: 1
+            0... .... = Spare: 0
+            .0.. .... = Spare: 0
+            ..00 .... = EPS Preferred CIoT network behaviour (EPS-PNB-CIoT): no additional information (0)
+            .... 00.. = 5GS Preferred CIoT network behaviour (5GS PNB-CIoT): no additional information (0)
+            .... ..0. = NG-RAN Radio Capability Update (NG-RAN-RCU): Not Needed
+            .... ...1 = SMS over NAS transport requested (SMS requested): Supported
+
+Frame 3: Packet, 148 bytes on wire (1184 bits), 148 bytes captured (1184 bits)
+    Encapsulation type: Ethernet (1)
+    Arrival Time: May 27, 2020 10:41:45.019328000 KST
+    UTC Arrival Time: May 27, 2020 01:41:45.019328000 UTC
+    Epoch Arrival Time: 1590543705.019328000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 14.000 microseconds]
+    [Time delta from previous displayed frame: 14.000 microseconds]
+    [Time since reference or first frame: 28.669000 milliseconds]
+    Frame Number: 3
+    Frame Length: 148 bytes (1184 bits)
+    Capture Length: 148 bytes (1184 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:udp:gsmtap_extra:nas-5gs]
+    Character encoding: ASCII (0)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+    Destination: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 0]
+Internet Protocol Version 4, Src: 127.0.0.1, Dst: 127.0.0.1
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 134
+    Identification: 0x0002 (2)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: UDP (17)
+    Header Checksum: 0xffff [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 127.0.0.1
+    Destination Address: 127.0.0.1
+    [Stream index: 0]
+User Datagram Protocol, Src Port: 13337, Dst Port: 4729
+    Source Port: 13337
+    Destination Port: 4729
+    Length: 114
+    Checksum: 0xffff [unverified]
+    [Checksum Status: Unverified]
+    [Stream index: 0]
+    [Stream Packet Number: 3]
+    [Timestamps]
+        [Time since first frame: 28.669000 milliseconds]
+        [Time since previous frame: 14.000 microseconds]
+    UDP payload (106 bytes)
+Extra analysis of the GSMTAP protocol
+    Version: 3
+    Maximum header length: 36 bytes
+    Type: 0x0504 (NAS-5GS)
+    Subtype: 0x0000 (NAS/5GS plain)
+    Type: Packet timestamp (0x0000)
+    Length: 12
+    Packet timestamp: May 27, 2020 10:41:45.019328000 KST
+    Type: Channel number (0x0002)
+    Length: 4
+    Channel number: 0
+Non-Access-Stratum 5GS (NAS)PDU
+    Plain NAS 5GS Message
+        Extended protocol discriminator: 5G mobility management messages (126)
+        0000 .... = Spare Half Octet: 0
+        .... 0000 = Security header type: Plain NAS message, not security protected (0)
+        Message type: Registration request (0x41)
+        5GS registration type
+            .... 1... = Follow-On Request bit (FOR): Follow-on request pending
+            .... .001 = 5GS registration type: initial registration (1)
+        NAS key set identifier
+            0... .... = Type of security context flag (TSC): Native security context (for KSIAMF)
+            .000 .... = NAS key set identifier: 0
+        5GS mobile identity
+            Length: 11
+            1... .... = Spare: 1
+            .1.. .... = Spare: 1
+            ..1. .... = Spare: 1
+            ...1 .... = Spare: 1
+            .... 0... = Spare: 0
+            .... .010 = Type of identity: 5G-GUTI (2)
+            Mobile Country Code (MCC): Korea (Rep. of) (450)
+            Mobile Network Code (MNC): LGU+ / 3G, 4G network (06)
+            AMF Region ID: 12
+            0001 1110 11.. .... = AMF Set ID: 123
+            ..00 1100 = AMF Pointer: 12
+            5G-TMSI: 201408705 (0x0c0140c1)
+        UE security capability
+            Element ID: 0x2e
+            Length: 2
+            1... .... = 5G-EA0: Supported
+            .1.. .... = 128-5G-EA1: Supported
+            ..1. .... = 128-5G-EA2: Supported
+            ...1 .... = 128-5G-EA3: Supported
+            .... 0... = 5G-EA4: Not supported
+            .... .0.. = 5G-EA5: Not supported
+            .... ..0. = 5G-EA6: Not supported
+            .... ...0 = 5G-EA7: Not supported
+            0... .... = 5G-IA0: Not supported
+            .1.. .... = 128-5G-IA1: Supported
+            ..1. .... = 128-5G-IA2: Supported
+            ...1 .... = 128-5G-IA3: Supported
+            .... 0... = 5G-IA4: Not supported
+            .... .0.. = 5G-IA5: Not supported
+            .... ..0. = 5G-IA6: Not supported
+            .... ...0 = 5G-IA7: Not supported
+        NAS message container
+            Element ID: 0x71
+            Length: 48
+            Non-Access-Stratum 5GS (NAS)PDU
+                Plain NAS 5GS Message
+                    Extended protocol discriminator: 5G mobility management messages (126)
+                    0000 .... = Spare Half Octet: 0
+                    .... 0000 = Security header type: Plain NAS message, not security protected (0)
+                    Message type: Registration request (0x41)
+                    5GS registration type
+                        .... 1... = Follow-On Request bit (FOR): Follow-on request pending
+                        .... .001 = 5GS registration type: initial registration (1)
+                    NAS key set identifier
+                        0... .... = Type of security context flag (TSC): Native security context (for KSIAMF)
+                        .000 .... = NAS key set identifier: 0
+                    5GS mobile identity
+                        Length: 11
+                        1... .... = Spare: 1
+                        .1.. .... = Spare: 1
+                        ..1. .... = Spare: 1
+                        ...1 .... = Spare: 1
+                        .... 0... = Spare: 0
+                        .... .010 = Type of identity: 5G-GUTI (2)
+                        Mobile Country Code (MCC): Korea (Rep. of) (450)
+                        Mobile Network Code (MNC): LGU+ / 3G, 4G network (06)
+                        AMF Region ID: 12
+                        0001 1110 11.. .... = AMF Set ID: 123
+                        ..00 1100 = AMF Pointer: 12
+                        5G-TMSI: 201408705 (0x0c0140c1)
+                    5GMM capability
+                        Element ID: 0x10
+                        Length: 1
+                        0... .... = Service gap control (SGC): Not supported
+                        .0.. .... = IP header compression for control plane CIoT 5GS optimization (5G-IPHC-CP CIoT): Not supported
+                        ..0. .... = N3 data transfer (N3 data): Not supported
+                        ...0 .... = Control plane CIoT 5GS optimization (5G-CP CIoT): Not supported
+                        .... 0... = Restriction on use of enhanced coverage support (RestrictEC): Not supported
+                        .... .0.. = LTE Positioning Protocol (LPP) capability: Not supported
+                        .... ..0. = ATTACH REQUEST message containing PDN CONNECTIVITY REQUEST message for handover support (HO attach): Not supported
+                        .... ...0 = EPC NAS supported (S1 mode): Not supported
+                    UE security capability
+                        Element ID: 0x2e
+                        Length: 2
+                        1... .... = 5G-EA0: Supported
+                        .1.. .... = 128-5G-EA1: Supported
+                        ..1. .... = 128-5G-EA2: Supported
+                        ...1 .... = 128-5G-EA3: Supported
+                        .... 0... = 5G-EA4: Not supported
+                        .... .0.. = 5G-EA5: Not supported
+                        .... ..0. = 5G-EA6: Not supported
+                        .... ...0 = 5G-EA7: Not supported
+                        0... .... = 5G-IA0: Not supported
+                        .1.. .... = 128-5G-IA1: Supported
+                        ..1. .... = 128-5G-IA2: Supported
+                        ...1 .... = 128-5G-IA3: Supported
+                        .... 0... = 5G-IA4: Not supported
+                        .... .0.. = 5G-IA5: Not supported
+                        .... ..0. = 5G-IA6: Not supported
+                        .... ...0 = 5G-IA7: Not supported
+                    NSSAI - Requested NSSAI
+                        Element ID: 0x2f
+                        Length: 5
+                        S-NSSAI 1
+                            Length: 4
+                            Slice/service type (SST): URLLC (2)
+                            Slice differentiator (SD): 1
+                    5GS tracking area identity - Last visited registered TAI
+                        Element ID: 0x52
+                        Mobile Country Code (MCC): Korea (Rep. of) (450)
+                        Mobile Network Code (MNC): LGU+ / 3G, 4G network (06)
+                        TAC: 1
+                    UE's usage setting
+                        Element ID: 0x18
+                        Length: 1
+                        .... 0... = Spare: 0
+                        .... .0.. = Spare: 0
+                        .... ..0. = Spare: 0
+                        .... ...1 = UE's usage setting: Data centric
+                    LADN indication
+                        Element ID: 0x74
+                        Length: 0
+                    Network slicing indication
+                        1001 .... = Element ID: 0x9-
+                        .... 0... = Spare: 0
+                        .... .0.. = Spare: 0
+                        .... ..0. = Default configured NSSAI indication (DCNI): Requested NSSAI not created from default configured NSSAI
+                        .... ...0 = Network slicing subscription change indication (NSSCI): Not Changed
+                    5GS update type
+                        Element ID: 0x53
+                        Length: 1
+                        0... .... = Spare: 0
+                        .0.. .... = Spare: 0
+                        ..00 .... = EPS Preferred CIoT network behaviour (EPS-PNB-CIoT): no additional information (0)
+                        .... 00.. = 5GS Preferred CIoT network behaviour (5GS PNB-CIoT): no additional information (0)
+                        .... ..0. = NG-RAN Radio Capability Update (NG-RAN-RCU): Not Needed
+                        .... ...1 = SMS over NAS transport requested (SMS requested): Supported
+
+Frame 4: Packet, 155 bytes on wire (1240 bits), 155 bytes captured (1240 bits)
+    Encapsulation type: Ethernet (1)
+    Arrival Time: May 27, 2020 10:41:45.019588000 KST
+    UTC Arrival Time: May 27, 2020 01:41:45.019588000 UTC
+    Epoch Arrival Time: 1590543705.019588000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 260.000 microseconds]
+    [Time delta from previous displayed frame: 260.000 microseconds]
+    [Time since reference or first frame: 28.929000 milliseconds]
+    Frame Number: 4
+    Frame Length: 155 bytes (1240 bits)
+    Capture Length: 155 bytes (1240 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:udp:gsmtap_extra:nas-5gs]
+    Character encoding: ASCII (0)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+    Destination: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 0]
+Internet Protocol Version 4, Src: 127.0.0.1, Dst: 127.0.0.1
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 141
+    Identification: 0x0003 (3)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: UDP (17)
+    Header Checksum: 0xffff [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 127.0.0.1
+    Destination Address: 127.0.0.1
+    [Stream index: 0]
+User Datagram Protocol, Src Port: 13337, Dst Port: 4729
+    Source Port: 13337
+    Destination Port: 4729
+    Length: 121
+    Checksum: 0xffff [unverified]
+    [Checksum Status: Unverified]
+    [Stream index: 0]
+    [Stream Packet Number: 4]
+    [Timestamps]
+        [Time since first frame: 28.929000 milliseconds]
+        [Time since previous frame: 260.000 microseconds]
+    UDP payload (113 bytes)
+Extra analysis of the GSMTAP protocol
+    Version: 3
+    Maximum header length: 36 bytes
+    Type: 0x0504 (NAS-5GS)
+    Subtype: 0x0001 (NAS/5GS)
+    Type: Packet timestamp (0x0000)
+    Length: 12
+    Packet timestamp: May 27, 2020 10:41:45.019588000 KST
+    Type: Channel number (0x0002)
+    Length: 4
+    Channel number: 0
+Non-Access-Stratum 5GS (NAS)PDU
+    Security protected NAS 5GS message
+        Extended protocol discriminator: 5G mobility management messages (126)
+        0000 .... = Spare Half Octet: 0
+        .... 0001 = Security header type: Integrity protected (1)
+        Message authentication code: 0xa0cad139
+        Sequence number: 3
+    Plain NAS 5GS Message
+        Extended protocol discriminator: 5G mobility management messages (126)
+        0000 .... = Spare Half Octet: 0
+        .... 0000 = Security header type: Plain NAS message, not security protected (0)
+        Message type: Registration request (0x41)
+        5GS registration type
+            .... 1... = Follow-On Request bit (FOR): Follow-on request pending
+            .... .001 = 5GS registration type: initial registration (1)
+        NAS key set identifier
+            0... .... = Type of security context flag (TSC): Native security context (for KSIAMF)
+            .000 .... = NAS key set identifier: 0
+        5GS mobile identity
+            Length: 11
+            1... .... = Spare: 1
+            .1.. .... = Spare: 1
+            ..1. .... = Spare: 1
+            ...1 .... = Spare: 1
+            .... 0... = Spare: 0
+            .... .010 = Type of identity: 5G-GUTI (2)
+            Mobile Country Code (MCC): Korea (Rep. of) (450)
+            Mobile Network Code (MNC): LGU+ / 3G, 4G network (06)
+            AMF Region ID: 12
+            0001 1110 11.. .... = AMF Set ID: 123
+            ..00 1100 = AMF Pointer: 12
+            5G-TMSI: 201408705 (0x0c0140c1)
+        UE security capability
+            Element ID: 0x2e
+            Length: 2
+            1... .... = 5G-EA0: Supported
+            .1.. .... = 128-5G-EA1: Supported
+            ..1. .... = 128-5G-EA2: Supported
+            ...1 .... = 128-5G-EA3: Supported
+            .... 0... = 5G-EA4: Not supported
+            .... .0.. = 5G-EA5: Not supported
+            .... ..0. = 5G-EA6: Not supported
+            .... ...0 = 5G-EA7: Not supported
+            0... .... = 5G-IA0: Not supported
+            .1.. .... = 128-5G-IA1: Supported
+            ..1. .... = 128-5G-IA2: Supported
+            ...1 .... = 128-5G-IA3: Supported
+            .... 0... = 5G-IA4: Not supported
+            .... .0.. = 5G-IA5: Not supported
+            .... ..0. = 5G-IA6: Not supported
+            .... ...0 = 5G-IA7: Not supported
+        NAS message container
+            Element ID: 0x71
+            Length: 48
+            Encrypted data
+
+Frame 5: Packet, 88 bytes on wire (704 bits), 88 bytes captured (704 bits)
+    Encapsulation type: Ethernet (1)
+    Arrival Time: May 27, 2020 10:41:45.020836000 KST
+    UTC Arrival Time: May 27, 2020 01:41:45.020836000 UTC
+    Epoch Arrival Time: 1590543705.020836000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 1.248000 milliseconds]
+    [Time delta from previous displayed frame: 1.248000 milliseconds]
+    [Time since reference or first frame: 30.177000 milliseconds]
+    Frame Number: 5
+    Frame Length: 88 bytes (704 bits)
+    Capture Length: 88 bytes (704 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:udp:gsmtap_extra:nr-rrc]
+    Character encoding: ASCII (0)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+    Destination: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 0]
+Internet Protocol Version 4, Src: 127.0.0.1, Dst: 127.0.0.1
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 74
+    Identification: 0x0004 (4)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: UDP (17)
+    Header Checksum: 0xffff [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 127.0.0.1
+    Destination Address: 127.0.0.1
+    [Stream index: 0]
+User Datagram Protocol, Src Port: 13337, Dst Port: 4729
+    Source Port: 13337
+    Destination Port: 4729
+    Length: 54
+    Checksum: 0xffff [unverified]
+    [Checksum Status: Unverified]
+    [Stream index: 0]
+    [Stream Packet Number: 5]
+    [Timestamps]
+        [Time since first frame: 30.177000 milliseconds]
+        [Time since previous frame: 1.248000 milliseconds]
+    UDP payload (46 bytes)
+Extra analysis of the GSMTAP protocol
+    Version: 3
+    Maximum header length: 40 bytes
+    Type: 0x0503 (NR RRC)
+    Subtype: 0x0007 (UL CCCH)
+    Type: Packet timestamp (0x0000)
+    Length: 12
+    Packet timestamp: May 27, 2020 10:41:45.020836000 KST
+    Type: Channel number (0x0002)
+    Length: 4
+    Channel number: 630624
+    Type: Multiplexing information (BSIC/PSC/PCI) (0x0005)
+    Length: 2
+    Multiplexing information (BSIC/PSC/PCI): 238
+NR Radio Resource Control (RRC) protocol
+    UL-CCCH-Message
+        message: c1 (0)
+            c1: rrcSetupRequest (0)
+                rrcSetupRequest
+                    rrcSetupRequest
+                        ue-Identity: randomValue (1)
+                            randomValue: 79c3ee9a2c [bit length 39, 1 LSB pad bits, 0111 1001  1100 0011  1110 1110  1001 1010  0010 110. decimal value 261489118486]
+                        establishmentCause: mo-Signalling (3)
+                        spare: 00 [bit length 1, 7 LSB pad bits, 0... .... decimal value 0]
+
+
+
+=== 텍스트 출력 (처음 20개) ===
+    1 01:41:44.990659    127.0.0.1 → 127.0.0.1    223 2020-05-27T10:41:44.990659000+0900 NR RRC 238 630624 13337 4729 SIB1 
+    2 01:41:45.019314    127.0.0.1 → 127.0.0.1    124 2020-05-27T10:41:45.019314000+0900 GSMTAPv3/NAS-5GS  0 13337 4729 Registration request
+    3 01:41:45.019328    127.0.0.1 → 127.0.0.1    148 2020-05-27T10:41:45.019328000+0900 GSMTAPv3/NAS-5GS/NAS-5GS  0 13337 4729 Registration request, Registration request
+    4 01:41:45.019588    127.0.0.1 → 127.0.0.1    155 2020-05-27T10:41:45.019588000+0900 GSMTAPv3/NAS-5GS  0 13337 4729 Registration request
+    5 01:41:45.020836    127.0.0.1 → 127.0.0.1    88 2020-05-27T10:41:45.020836000+0900 NR RRC 238 630624 13337 4729 RRC Setup Request
+    6 01:41:45.097895    127.0.0.1 → 127.0.0.1    201 2020-05-27T10:41:45.097895000+0900 NR RRC 238 630624 13337 4729 RRC Setup
+    7 01:41:45.109723    127.0.0.1 → 127.0.0.1    168 2020-05-27T10:41:45.109723000+0900 NR RRC/NAS-5GS 238 630624 13337 4729 RRC Setup Complete, Registration request
+    8 01:41:45.210340    127.0.0.1 → 127.0.0.1    127 2020-05-27T10:41:45.210340000+0900 NR RRC/NAS-5GS 238 630624 13337 4729 DL Information Transfer, Authentication request
+    9 01:41:45.210478    127.0.0.1 → 127.0.0.1    118 2020-05-27T10:41:45.210478000+0900 GSMTAPv3/NAS-5GS  0 13337 4729 Authentication request
+   10 01:41:45.297948    127.0.0.1 → 127.0.0.1    97 2020-05-27T10:41:45.297948000+0900 GSMTAPv3/NAS-5GS  0 13337 4729 Authentication response
+   11 01:41:45.298057    127.0.0.1 → 127.0.0.1    104 2020-05-27T10:41:45.298057000+0900 GSMTAPv3/NAS-5GS  0 13337 4729 Authentication response
+   12 01:41:45.298161    127.0.0.1 → 127.0.0.1    113 2020-05-27T10:41:45.298161000+0900 NR RRC/NAS-5GS 238 630624 13337 4729 UL Information Transfer, Authentication response
+   13 01:41:45.330376    127.0.0.1 → 127.0.0.1    104 2020-05-27T10:41:45.330376000+0900 NR RRC/NAS-5GS 238 630624 13337 4729 DL Information Transfer, Security mode command
+   14 01:41:45.330508    127.0.0.1 → 127.0.0.1    88 2020-05-27T10:41:45.330508000+0900 GSMTAPv3/NAS-5GS  0 13337 4729 Security mode command
+   15 01:41:45.331093    127.0.0.1 → 127.0.0.1    124 2020-05-27T10:41:45.331093000+0900 GSMTAPv3/NAS-5GS  0 13337 4729 Registration request
+   16 01:41:45.331098    127.0.0.1 → 127.0.0.1    142 2020-05-27T10:41:45.331098000+0900 GSMTAPv3/NAS-5GS/NAS-5GS  0 13337 4729 Security mode complete, Registration request
+   17 01:41:45.331187    127.0.0.1 → 127.0.0.1    149 2020-05-27T10:41:45.331187000+0900 GSMTAPv3/NAS-5GS  0 13337 4729 
+   18 01:41:45.331312    127.0.0.1 → 127.0.0.1    158 2020-05-27T10:41:45.331312000+0900 NR RRC/NAS-5GS 238 630624 13337 4729 UL Information Transfer
+   19 01:41:45.384873    127.0.0.1 → 127.0.0.1    85 2020-05-27T10:41:45.384873000+0900 NR RRC 238 630624 13337 4729 Security Mode Command
+   20 01:41:45.386167    127.0.0.1 → 127.0.0.1    84 2020-05-27T10:41:45.386167000+0900 NR RRC 238 630624 13337 4729 Security Mode Complete

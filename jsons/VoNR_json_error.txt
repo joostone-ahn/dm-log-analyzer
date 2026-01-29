@@ -1,0 +1,134 @@
+JSON 파싱 에러: Expecting value: line 1 column 1 (char 0)
+
+=== tshark 출력 (처음 5000자) ===
+Cannot find dissector nr-rrc.mcch, falling back to data
+Cannot find dissector nr-rrc.rrc_reconf_compl, falling back to data
+Cannot find dissector nr-rrc.sib1, falling back to data
+Cannot find dissector nr-rrc.sib2, falling back to data
+Cannot find dissector nr-rrc.sib3, falling back to data
+Cannot find dissector nr-rrc.sib4, falling back to data
+Cannot find dissector nr-rrc.sib5, falling back to data
+Cannot find dissector nr-rrc.sib6, falling back to data
+Cannot find dissector nr-rrc.sib7, falling back to data
+Cannot find dissector nr-rrc.sib8, falling back to data
+Cannot find dissector nr-rrc.sib9, falling back to data
+Cannot find dissector nr-rrc.sib10, falling back to data
+Cannot find dissector nr-rrc.sib11, falling back to data
+Cannot find dissector nr-rrc.sib12, falling back to data
+Cannot find dissector nr-rrc.sib13, falling back to data
+Cannot find dissector nr-rrc.sib14, falling back to data
+Cannot find dissector nr-rrc.sib15, falling back to data
+Cannot find dissector nr-rrc.sib16, falling back to data
+Cannot find dissector nr-rrc.sib17, falling back to data
+Cannot find dissector nr-rrc.sib18, falling back to data
+Cannot find dissector nr-rrc.sib19, falling back to data
+Cannot find dissector nr-rrc.sib20, falling back to data
+Cannot find dissector nr-rrc.sib21, falling back to data
+Cannot find dissector nr-rrc.sib22, falling back to data
+Cannot find dissector nr-rrc.sib23, falling back to data
+Cannot find dissector nr-rrc.sib24, falling back to data
+Cannot find dissector nr-rrc.sib25, falling back to data
+Cannot find dissector nr-rrc.sib17bis, falling back to data
+[
+  {
+    "_index": "packets-2023-10-10",
+    "_type": "doc",
+    "_score": null,
+    "_source": {
+      "layers": {
+        "frame": {
+          "frame.encap_type": "1",
+          "frame.time": "Oct 10, 2023 05:25:36.051295000 UTC",
+          "frame.offset_shift": "0.000000000",
+          "frame.time_epoch": "1696915536.051295000",
+          "frame.time_delta": "0.000000000",
+          "frame.time_delta_displayed": "0.000000000",
+          "frame.time_relative": "0.000000000",
+          "frame.number": "1",
+          "frame.len": "71",
+          "frame.cap_len": "71",
+          "frame.marked": "0",
+          "frame.ignored": "0",
+          "frame.protocols": "eth:ethertype:ip:udp:gsmtap_extra:gsmtap:lte_rrc"
+        },
+        "eth": {
+          "eth.dst": "00:00:00:00:00:00",
+          "eth.dst_tree": {
+            "eth.dst_resolved": "00:00:00_00:00:00",
+            "eth.dst.oui": "0",
+            "eth.dst.oui_resolved": "Officially Xerox, but 0:0:0:0:0:0 is more common",
+            "eth.addr": "00:00:00:00:00:00",
+            "eth.addr_resolved": "00:00:00_00:00:00",
+            "eth.addr.oui": "0",
+            "eth.addr.oui_resolved": "Officially Xerox, but 0:0:0:0:0:0 is more common",
+            "eth.dst.lg": "0",
+            "eth.lg": "0",
+            "eth.dst.ig": "0",
+            "eth.ig": "0"
+          },
+          "eth.src": "00:00:00:00:00:00",
+          "eth.src_tree": {
+            "eth.src_resolved": "00:00:00_00:00:00",
+            "eth.src.oui": "0",
+            "eth.src.oui_resolved": "Officially Xerox, but 0:0:0:0:0:0 is more common",
+            "eth.addr": "00:00:00:00:00:00",
+            "eth.addr_resolved": "00:00:00_00:00:00",
+            "eth.addr.oui": "0",
+            "eth.addr.oui_resolved": "Officially Xerox, but 0:0:0:0:0:0 is more common",
+            "eth.src.lg": "0",
+            "eth.lg": "0",
+            "eth.src.ig": "0",
+            "eth.ig": "0"
+          },
+          "eth.type": "0x0800"
+        },
+        "ip": {
+          "ip.version": "4",
+          "ip.hdr_len": "20",
+          "ip.dsfield": "0x00",
+          "ip.dsfield_tree": {
+            "ip.dsfield.dscp": "0",
+            "ip.dsfield.ecn": "0"
+          },
+          "ip.len": "57",
+          "ip.id": "0x0000",
+          "ip.flags": "0x40",
+          "ip.flags_tree": {
+            "ip.flags.rb": "0",
+            "ip.flags.df": "1",
+            "ip.flags.mf": "0"
+          },
+          "ip.frag_offset": "0",
+          "ip.ttl": "64",
+          "ip.proto": "17",
+          "ip.checksum": "0xffff",
+          "ip.checksum.status": "2",
+          "ip.src": "127.0.0.1",
+          "ip.addr": [
+            "127.0.0.1",
+            "127.0.0.1"
+          ],
+          "ip.src_host": "127.0.0.1",
+          "ip.host": [
+            "127.0.0.1",
+            "127.0.0.1"
+          ],
+          "ip.dst": "127.0.0.1",
+          "ip.dst_host": "127.0.0.1"
+        },
+        "udp": {
+          "udp.srcport": "13337",
+          "udp.dstport": "4729",
+          "udp.port": [
+            "13337",
+            "4729"
+          ],
+          "udp.length": "37",
+          "udp.checksum": "0xffff",
+          "udp.checksum.status": "2",
+          "udp.stream": "0",
+          "Timestamps": {
+            "udp.time_relative": "0.000000000",
+            "udp.time_delta": "0.000000000"
+          },
+          "udp.payload": "02:04:0d:00:00:64:00:00:00:00:08:00:06:00:00:00:40:8
