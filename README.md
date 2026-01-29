@@ -31,7 +31,34 @@ Docker 이미지 빌드 시 scat이 자동으로 설치됩니다 ([fgsect/scat](
 
 ## 설치 및 실행
 
-### macOS / Linux
+### macOS (Intel)
+
+```bash
+docker run -d \
+  -p 8080:8080 \
+  -v $(pwd)/uploads:/app/uploads \
+  -v $(pwd)/pcaps:/app/pcaps \
+  -v $(pwd)/jsons:/app/jsons \
+  --name dm-log-analyzer \
+  ghcr.io/joostone-ahn/dm-log-analyzer:latest
+```
+
+### macOS (Apple Silicon)
+
+```bash
+docker run -d \
+  --platform linux/amd64 \
+  -p 8080:8080 \
+  -v $(pwd)/uploads:/app/uploads \
+  -v $(pwd)/pcaps:/app/pcaps \
+  -v $(pwd)/jsons:/app/jsons \
+  --name dm-log-analyzer \
+  ghcr.io/joostone-ahn/dm-log-analyzer:latest
+```
+
+> **참고**: Apple Silicon Mac에서는 `--platform linux/amd64` 옵션이 필요합니다. Rosetta 2를 통해 에뮬레이션되며 성능 차이는 거의 없습니다.
+
+### Linux
 
 ```bash
 docker run -d \
