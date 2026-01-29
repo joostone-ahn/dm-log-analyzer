@@ -38,3 +38,6 @@ workspace/
 
 # Specs (3GPP documents)
 specs/
+
+# Kiro
+.kiro/steering/
