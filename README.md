@@ -143,6 +143,12 @@ docker-compose up -d
 
 ## 최근 업데이트
 
+### v1.2.2 (2026-01-29)
+- **NR RRC 파싱 안정성 개선**: Docker 환경에서 NR RRC 메시지 파싱 문제 해결
+  - scat Lua 플러그인을 Wireshark 전역 디렉토리에 설치하여 자동 로드
+  - GSMTAP 페이로드의 RRC 디코딩 안정화
+- **빌드 최적화**: AMD64 단일 플랫폼 빌드로 전환하여 빌드 시간 50% 단축
+
 ### v1.2.1 (2026-01-28)
 - **GitHub Container Registry 지원**: 자동 이미지 빌드 및 배포
 - **README 간소화**: Docker 기준으로 설치 방법 통합, macOS/Linux와 Windows 명확히 구분

@@ -42,6 +42,10 @@ COPY utils.py .
 COPY templates/ templates/
 COPY wireshark/ wireshark/
 
+# Wireshark Lua 플러그인 전역 설치
+RUN mkdir -p /usr/lib/x86_64-linux-gnu/wireshark/plugins \
+    && cp wireshark/scat.lua /usr/lib/x86_64-linux-gnu/wireshark/plugins/
+
 # 데이터 디렉토리 생성
 RUN mkdir -p uploads pcaps jsons
 
