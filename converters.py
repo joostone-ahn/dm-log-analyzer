@@ -113,6 +113,19 @@ def convert_pcap_to_json(pcap_path, json_path):
         print(f"[DEBUG] tshark 명령어: {' '.join(cmd)}")
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=None, env=env)
         
+        # stdout에서 JSON 부분만 추출 (Lua 플러그인 에러 메시지 제거)
+        stdout_lines = result.stdout.split('\n')
+        json_start_idx = -1
+        for i, line in enumerate(stdout_lines):
+            if line.strip().startswith('[') or line.strip().startswith('{'):
+                json_start_idx = i
+                break
+        
+        if json_start_idx >= 0:
+            json_output = '\n'.join(stdout_lines[json_start_idx:])
+        else:
+            json_output = result.stdout
+        
         # 디버그 정보 먼저 저장
         debug_path = json_path.replace('.json', '_debug.txt')
         with open(debug_path, 'w', encoding='utf-8') as f:
@@ -121,31 +134,33 @@ def convert_pcap_to_json(pcap_path, json_path):
             f.write(f"Return code: {result.returncode}\n")
             f.write(f"PCAP 경로: {pcap_path}\n")
             f.write(f"PCAP 크기: {pcap_size} bytes\n")
-            f.write(f"PCAP 읽기 가능: {os.access(pcap_path, os.R_OK)}\n\n")
+            f.write(f"PCAP 읽기 가능: {os.access(pcap_path, os.R_OK)}\n")
+            f.write(f"JSON 시작 라인: {json_start_idx}\n\n")
             f.write(f"=== stderr ===\n{result.stderr}\n\n")
-            f.write(f"=== stdout (처음 5000자) ===\n{result.stdout[:5000]}\n")
+            f.write(f"=== stdout (처음 5000자) ===\n{result.stdout[:5000]}\n\n")
+            f.write(f"=== JSON 출력 (처음 5000자) ===\n{json_output[:5000]}\n")
         
         if result.returncode != 0:
             raise Exception(f"tshark 변환 실패 (return code: {result.returncode}): {result.stderr}")
         
-        if not result.stdout.strip():
+        if not json_output.strip():
             # 패킷 수 확인
             cmd_count = ['tshark', '-r', pcap_path, '-c', '1']
             result_count = subprocess.run(cmd_count, capture_output=True, text=True, timeout=30, env=env)
             raise Exception(f"tshark가 빈 출력을 반환했습니다. PCAP 파일에 패킷이 있는지 확인하세요.\n패킷 확인: {result_count.stdout}\nstderr: {result_count.stderr}")
         
-        if result.stdout.strip().startswith('<!'):
+        if json_output.strip().startswith('<!'):
             raise Exception("tshark가 HTML 에러를 반환했습니다.")
         
         # 중복 키를 배열로 변환
         try:
-            data = parse_json_with_duplicate_keys(result.stdout)
+            data = parse_json_with_duplicate_keys(json_output)
         except json.JSONDecodeError as e:
             error_debug_path = json_path.replace('.json', '_json_error.txt')
             with open(error_debug_path, 'w', encoding='utf-8') as f:
                 f.write(f"JSON 파싱 에러: {str(e)}\n\n")
-                f.write("=== tshark 출력 (처음 5000자) ===\n")
-                f.write(result.stdout[:5000])
+                f.write("=== JSON 출력 (처음 5000자) ===\n")
+                f.write(json_output[:5000])
             raise Exception(f"tshark 출력이 유효한 JSON이 아닙니다: {str(e)}")
         
         # JSON 저장
