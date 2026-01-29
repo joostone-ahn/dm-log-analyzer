@@ -2,8 +2,6 @@
 
 DM(Diagnostic Monitor) 로그 파일을 파싱하여 LTE/NR RRC 및 EPS/5GS NAS 메시지의 Call Flow를 시각화하는 웹 애플리케이션입니다.
 
-Docker를 사용하여 Windows, macOS, Linux 모든 환경에서 실행할 수 있습니다.
-
 ---
 
 ## 주요 기능
@@ -15,109 +13,55 @@ Docker를 사용하여 Windows, macOS, Linux 모든 환경에서 실행할 수 �
 
 ---
 
-## 사전 요구사항
+## 빠른 시작
 
-### Docker 설치
+### 1. Docker 설치
 
-- Windows: [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop/)
-- macOS: [Docker Desktop for Mac](https://www.docker.com/products/docker-desktop/)
-- Linux: [Docker Engine](https://docs.docker.com/engine/install/)
+- **Windows/macOS**: [Docker Desktop](https://www.docker.com/products/docker-desktop/) 설치
+- **Linux**: [Docker Engine](https://docs.docker.com/engine/install/) 설치
 
-### scat 자동 설치
+### 2. 컨테이너 실행
 
-Docker 이미지 빌드 시 scat이 자동으로 설치됩니다 ([fgsect/scat](https://github.com/fgsect/scat)).
-
----
-
-## 설치 및 실행
-
-### macOS (Intel)
+#### macOS / Linux
 
 ```bash
 docker run -d \
   -p 8080:8080 \
-  -v $(pwd)/uploads:/app/uploads \
-  -v $(pwd)/pcaps:/app/pcaps \
-  -v $(pwd)/jsons:/app/jsons \
+  -v $(pwd)/data:/app/uploads \
   --name dm-log-analyzer \
   ghcr.io/joostone-ahn/dm-log-analyzer:latest
 ```
 
-### macOS (Apple Silicon)
+#### macOS (Apple Silicon)
 
 ```bash
 docker run -d \
   --platform linux/amd64 \
   -p 8080:8080 \
-  -v $(pwd)/uploads:/app/uploads \
-  -v $(pwd)/pcaps:/app/pcaps \
-  -v $(pwd)/jsons:/app/jsons \
+  -v $(pwd)/data:/app/uploads \
   --name dm-log-analyzer \
   ghcr.io/joostone-ahn/dm-log-analyzer:latest
 ```
 
-> **참고**: Apple Silicon Mac에서는 `--platform linux/amd64` 옵션이 필요함
+#### Windows (PowerShell)
 
-### Linux
-
-```bash
-docker run -d \
-  -p 8080:8080 \
-  -v $(pwd)/uploads:/app/uploads \
-  -v $(pwd)/pcaps:/app/pcaps \
-  -v $(pwd)/jsons:/app/jsons \
-  --name dm-log-analyzer \
-  ghcr.io/joostone-ahn/dm-log-analyzer:latest
+```powershell
+docker run -d -p 8080:8080 -v ${PWD}/data:/app/uploads --name dm-log-analyzer ghcr.io/joostone-ahn/dm-log-analyzer:latest
 ```
 
-### Windows
+#### Windows (CMD)
 
 ```cmd
-docker run -d -p 8080:8080 -v %cd%/uploads:/app/uploads -v %cd%/pcaps:/app/pcaps -v %cd%/jsons:/app/jsons --name dm-log-analyzer ghcr.io/joostone-ahn/dm-log-analyzer:latest
+docker run -d -p 8080:8080 -v %cd%/data:/app/uploads --name dm-log-analyzer ghcr.io/joostone-ahn/dm-log-analyzer:latest
 ```
 
-### 접속
+### 3. 접속
 
 브라우저에서 http://localhost:8080 접속
 
 ---
 
-## Docker 관리 명령어
-
-### 컨테이너 제어
-
-```bash
-# 시작
-docker compose up -d
-
-# 중지
-docker compose stop
-
-# 재시작
-docker compose restart
-
-# 중지 및 삭제
-docker compose down
-
-# 로그 확인
-docker compose logs -f
-```
-
-### 이미지 업데이트
-
-```bash
-# 최신 이미지 다운로드
-docker compose pull
-
-# 컨테이너 재시작
-docker compose up -d
-```
-
----
-
 ## 사용 방법
-
-### 파일 업로드 및 분석
 
 1. 웹 페이지에서 "파일 선택" 버튼 클릭
 2. DM 로그 파일(HDF/SDM/QMDL) 또는 PCAP 파일 선택
@@ -127,34 +71,45 @@ docker compose up -d
 
 ### 지원 파일 형식
 
-| 형식 | 확장자 | scat 필요 여부 |
-|------|--------|----------------|
-| PCAP | .pcap | 불필요 |
-| QMDL | .qmdl | 필요 |
-| HDF | .hdf, .hdf5 | 필요 |
-| SDM | .sdm | 필요 |
+| 형식 | 확장자 | 설명 |
+|------|--------|------|
+| PCAP | .pcap | Wireshark 캡처 파일 |
+| QMDL | .qmdl | Qualcomm DM 로그 |
+| HDF | .hdf, .hdf5 | HDF5 포맷 DM 로그 |
+| SDM | .sdm | Samsung DM 로그 |
 
 ---
 
-## Docker 관리 명령어
+## Docker 관리
 
-## 프로젝트 구조
+### 컨테이너 제어
 
+```bash
+# 중지
+docker stop dm-log-analyzer
+
+# 시작
+docker start dm-log-analyzer
+
+# 재시작
+docker restart dm-log-analyzer
+
+# 삭제
+docker rm -f dm-log-analyzer
+
+# 로그 확인
+docker logs -f dm-log-analyzer
 ```
-.
-├── app.py                 # Flask 웹 서버 (라우트만)
-├── converters.py          # 파일 변환 로직 (scat, tshark)
-├── parsers.py             # 프로토콜 파싱 로직 (RRC/NAS)
-├── message_types.py       # 3GPP 메시지 타입 매핑
-├── utils.py               # 유틸리티 함수
-├── templates/
-│   └── index.html        # 프론트엔드 UI
-├── uploads/              # 업로드된 로그 파일 저장
-├── pcaps/                # 변환된 PCAP 파일 저장
-├── jsons/                # 파싱된 JSON 파일 저장
-├── Dockerfile            # Docker 이미지 정의
-├── docker-compose.yml    # Docker Compose 설정
-└── requirements.txt      # Python 의존성
+
+### 이미지 업데이트
+
+```bash
+# 최신 이미지 다운로드
+docker pull ghcr.io/joostone-ahn/dm-log-analyzer:latest
+
+# 기존 컨테이너 삭제 후 재실행
+docker rm -f dm-log-analyzer
+docker run -d -p 8080:8080 -v $(pwd)/data:/app/uploads --name dm-log-analyzer ghcr.io/joostone-ahn/dm-log-analyzer:latest
 ```
 
 ---
@@ -170,26 +125,20 @@ docker compose up -d
 
 ## 최근 업데이트
 
+### v1.2.3 (2026-01-29)
+- **프로젝트 구조 개선**: Python 파일을 src/ 폴더로 정리
+- **문서 업데이트**: 사용자 중심으로 README 재구성
+
 ### v1.2.2 (2026-01-29)
 - **NR RRC 파싱 안정성 개선**: Docker 환경에서 NR RRC 메시지 파싱 문제 해결
-  - scat Lua 플러그인을 Wireshark 전역 디렉토리에 설치하여 자동 로드
-  - GSMTAP 페이로드의 RRC 디코딩 안정화
-- **빌드 최적화**: AMD64 단일 플랫폼 빌드로 전환하여 빌드 시간 50% 단축
-
-### v1.2.1 (2026-01-28)
-- **GitHub Container Registry 지원**: 자동 이미지 빌드 및 배포
-- **README 간소화**: Docker 기준으로 설치 방법 통합, macOS/Linux와 Windows 명확히 구분
-- **테스트 파일 제거**: 프로젝트 관련 파일만 Git에 포함
+- **빌드 최적화**: AMD64 단일 플랫폼 빌드로 전환
 
 ### v1.2.0 (2026-01-28)
-- **모듈화 리팩토링**: app.py를 기능별 모듈로 분리 (1120줄 → 90줄)
+- **모듈화 리팩토링**: 기능별 모듈 분리로 유지보수성 향상
 - **Docker 배포 지원**: Windows, macOS, Linux 크로스 플랫폼 배포
-- **scat 자동 설치**: Docker 이미지 빌드 시 자동 설치
-- **코드 유지보수성 향상**: 기능별 모듈 분리로 가독성 개선
 
 ### v1.1.0 (2026-01-28)
-- **GSMTAPv3 배열 형식 지원**: tshark JSON 출력에서 RRC 레이어가 배열로 나오는 경우 자동 처리
-- **파싱 안정성 개선**: VoNR Service Request 시나리오 등 실제 로그에서 누락되던 RRC 메시지 파싱 문제 해결
+- **GSMTAPv3 배열 형식 지원**: VoNR 등 실제 로그 파싱 안정성 개선
 
 ---
 
@@ -199,15 +148,5 @@ MIT License
 
 ### 외부 도구 라이선스
 
-이 프로젝트는 다음 오픈소스 도구를 사용합니다:
-
-- **SCAT (Signaling Collection and Analysis Tool)**
-  - 저장소: [fgsect/scat](https://github.com/fgsect/scat)
-  - 라이선스: GNU General Public License v2.0
-  - 용도: DM 로그(HDF/SDM/QMDL) → PCAP 변환
-  - Docker 이미지 빌드 시 자동으로 설치됩니다
-
-- **tshark (Wireshark CLI)**
-  - 저장소: [Wireshark](https://www.wireshark.org/)
-  - 라이선스: GNU General Public License v2.0
-  - 용도: PCAP → JSON 파싱
+- **SCAT**: [fgsect/scat](https://github.com/fgsect/scat) - GPL v2.0
+- **tshark**: [Wireshark](https://www.wireshark.org/) - GPL v2.0
