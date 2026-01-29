@@ -23,6 +23,11 @@ env/
 
 # Node
 node_modules/
+package.json
+package-lock.json
+
+# IDE
+.vscode/
 
 # Docker
 scat
