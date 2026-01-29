@@ -12,9 +12,12 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
-    tshark \
     git \
     libusb-1.0-0 \
+    software-properties-common \
+    && add-apt-repository ppa:wireshark-dev/stable \
+    && apt-get update \
+    && apt-get install -y tshark \
     && rm -rf /var/lib/apt/lists/*
 
 # tshark를 non-root 사용자가 실행할 수 있도록 설정
