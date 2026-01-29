@@ -15,10 +15,9 @@ DM(Diagnostic Monitor) 로그 파일을 파싱하여 LTE/NR RRC 및 EPS/5GS NAS 
 
 ## 빠른 시작
 
-### 1. Docker 설치
+### 1. Docker Desktop 설치
 
-- **Windows/macOS**: [Docker Desktop](https://www.docker.com/products/docker-desktop/) 설치
-- **Linux**: [Docker Engine](https://docs.docker.com/engine/install/) 설치
+[Docker Desktop](https://www.docker.com/products/docker-desktop/) 다운로드 및 설치
 
 ### 2. 컨테이너 실행
 
@@ -42,6 +41,8 @@ docker run -d \
   --name dm-log-analyzer \
   ghcr.io/joostone-ahn/dm-log-analyzer:latest
 ```
+
+> **참고**: Apple Silicon Mac에서는 `--platform linux/amd64` 옵션 필요 (Rosetta 2 에뮬레이션)
 
 #### Windows (PowerShell)
 
