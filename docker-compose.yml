@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   dm-log-analyzer:
     # GitHub Container Registry에서 이미지 pull
