@@ -56,7 +56,7 @@ docker run -d \
   ghcr.io/joostone-ahn/dm-log-analyzer:latest
 ```
 
-> **참고**: Apple Silicon Mac에서는 `--platform linux/amd64` 옵션이 필요합니다. Rosetta 2를 통해 에뮬레이션되며 성능 차이는 거의 없습니다.
+> **참고**: Apple Silicon Mac에서는 `--platform linux/amd64` 옵션이 필요함
 
 ### Linux
 
@@ -88,29 +88,29 @@ docker run -d -p 8080:8080 -v %cd%/uploads:/app/uploads -v %cd%/pcaps:/app/pcaps
 
 ```bash
 # 시작
-docker-compose up -d
+docker compose up -d
 
 # 중지
-docker-compose stop
+docker compose stop
 
 # 재시작
-docker-compose restart
+docker compose restart
 
 # 중지 및 삭제
-docker-compose down
+docker compose down
 
 # 로그 확인
-docker-compose logs -f
+docker compose logs -f
 ```
 
 ### 이미지 업데이트
 
 ```bash
 # 최신 이미지 다운로드
-docker-compose pull
+docker compose pull
 
 # 컨테이너 재시작
-docker-compose up -d
+docker compose up -d
 ```
 
 ---
