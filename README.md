@@ -50,12 +50,6 @@ docker run -d \
 docker run -d -p 8080:8080 -v ${PWD}/data:/app/uploads --name dm-log-analyzer ghcr.io/joostone-ahn/dm-log-analyzer:latest
 ```
 
-#### Windows (CMD)
-
-```cmd
-docker run -d -p 8080:8080 -v %cd%/data:/app/uploads --name dm-log-analyzer ghcr.io/joostone-ahn/dm-log-analyzer:latest
-```
-
 ### 3. 접속
 
 브라우저에서 http://localhost:8080 접속
