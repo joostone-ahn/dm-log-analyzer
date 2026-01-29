@@ -4,16 +4,14 @@
 
 ```
 .
-├── app.py                      # Flask 웹 서버 (라우트만)
-├── converters.py               # 파일 변환 로직 (scat, tshark)
-├── parsers.py                  # 프로토콜 파싱 로직 (RRC/NAS)
-├── message_types.py            # 3GPP 메시지 타입 매핑
-├── utils.py                    # 유틸리티 함수
-├── rtcp_analyze.py             # RTCP 품질 분석 스크립트
-├── sa_session_analyze.py       # SA 세션 분석 스크립트
-├── requirements.txt            # Python 의존성
-├── Dockerfile                  # Docker 이미지 정의
-├── docker-compose.yml          # Docker Compose 설정
+├── src/                        # 소스 코드
+│   ├── app.py                 # Flask 웹 서버 (라우트만)
+│   ├── converters.py          # 파일 변환 로직 (scat, tshark)
+│   ├── parsers.py             # 프로토콜 파싱 로직 (RRC/NAS)
+│   ├── message_types.py       # 3GPP 메시지 타입 매핑
+│   ├── utils.py               # 유틸리티 함수
+│   ├── rtcp_analyze.py        # RTCP 품질 분석 스크립트
+│   └── sa_session_analyze.py  # SA 세션 분석 스크립트
 ├── templates/
 │   └── index.html             # 프론트엔드 UI (단일 페이지)
 ├── debug/                     # 디버그 및 테스트 스크립트
@@ -26,12 +24,15 @@
 ├── uploads/                   # 업로드된 로그 파일 저장 (HDF/SDM/QMDL/PCAP)
 ├── pcaps/                     # 변환된 PCAP 파일 저장
 ├── jsons/                     # 파싱된 JSON 파일 저장
+├── requirements.txt           # Python 의존성
+├── Dockerfile                 # Docker 이미지 정의
+├── docker-compose.yml         # Docker Compose 설정
 └── specs/                     # 3GPP 표준 문서 (참고용)
 ```
 
 ## 핵심 파일 설명
 
-### app.py
+### src/app.py
 
 Flask 웹 서버 (모듈화된 구조):
 
@@ -40,10 +41,10 @@ Flask 웹 서버 (모듈화된 구조):
   - `/upload`: 파일 업로드 및 처리 (POST)
 
 - **임포트**:
-  - `converters`: 파일 변환 함수
-  - `parsers`: 프로토콜 파싱 함수
+  - `src.converters`: 파일 변환 함수
+  - `src.parsers`: 프로토콜 파싱 함수
 
-### converters.py
+### src/converters.py
 
 파일 변환 관련 함수:
 
@@ -51,7 +52,7 @@ Flask 웹 서버 (모듈화된 구조):
 - `convert_to_pcap()`: HDF/SDM/QMDL → PCAP 변환 (scat 사용)
 - `convert_pcap_to_json()`: PCAP → JSON 파싱 (tshark 사용)
 
-### parsers.py
+### src/parsers.py
 
 프로토콜 파싱 관련 함수:
 
@@ -63,14 +64,14 @@ Flask 웹 서버 (모듈화된 구조):
 - `extract_sib_info()`: SystemInformation 메시지의 SIB 타입 추출
 - `parse_call_flow()`: JSON → Call Flow 데이터 파싱
 
-### message_types.py
+### src/message_types.py
 
 3GPP 표준 기반 메시지 타입 매핑:
 
 - `get_nas_5gs_message_name()`: NAS 5GS 메시지 타입 변환 (3GPP TS 24.501)
 - `get_nas_eps_message_name()`: NAS EPS 메시지 타입 변환 (3GPP TS 24.301)
 
-### utils.py
+### src/utils.py
 
 유틸리티 함수:
 
@@ -94,10 +95,10 @@ Flask 웹 서버 (모듈화된 구조):
   - `showDetails()`: 메시지 상세 정보 표시
   - `renderTree()`: IE 트리 구조 렌더링
 
-### 분석 스크립트
+### 분석 스크립트 (src/)
 
-- **rtcp_analyze.py**: VoNR RTCP 품질 분석 (MOS, Jitter, Loss Rate)
-- **sa_session_analyze.py**: 5G SA 세션 분석 (PDU Session, QoS Flow)
+- **src/rtcp_analyze.py**: VoNR RTCP 품질 분석 (MOS, Jitter, Loss Rate)
+- **src/sa_session_analyze.py**: 5G SA 세션 분석 (PDU Session, QoS Flow)
 
 ### 디버그 스크립트 (debug/)
 
@@ -115,20 +116,23 @@ Flask 웹 서버 (모듈화된 구조):
 프로젝트는 기능별로 모듈화되어 있습니다:
 
 ```
-app.py (Flask 라우트)
-  ├─ converters.py (파일 변환)
-  │   └─ utils.py (유틸리티)
-  └─ parsers.py (프로토콜 파싱)
-      ├─ message_types.py (메시지 타입 매핑)
-      └─ utils.py (유틸리티)
+src/
+├── app.py (Flask 라우트)
+├── converters.py (파일 변환)
+│   └─ utils.py (유틸리티)
+├── parsers.py (프로토콜 파싱)
+│   ├─ message_types.py (메시지 타입 매핑)
+│   └─ utils.py (유틸리티)
+├── rtcp_analyze.py (RTCP 품질 분석)
+└── sa_session_analyze.py (SA 세션 분석)
 ```
 
 ## 데이터 흐름
 
 1. 사용자가 HDF/SDM/QMDL/PCAP 파일 업로드
-2. `converters.convert_to_pcap()`: scat으로 PCAP 변환 (PCAP인 경우 스킵)
-3. `converters.convert_pcap_to_json()`: tshark로 JSON 파싱 (RRC/NAS 추출)
-4. `parsers.parse_call_flow()`: JSON 파싱하여 Call Flow 데이터 생성
+2. `src.converters.convert_to_pcap()`: scat으로 PCAP 변환 (PCAP인 경우 스킵)
+3. `src.converters.convert_pcap_to_json()`: tshark로 JSON 파싱 (RRC/NAS 추출)
+4. `src.parsers.parse_call_flow()`: JSON 파싱하여 Call Flow 데이터 생성
 5. 프론트엔드에서 시각화
 
 ## 코딩 규칙

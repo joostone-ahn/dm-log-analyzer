@@ -34,7 +34,7 @@ pip install -r requirements.txt
 
 ```bash
 # 개발 서버 (디버그 모드)
-python app.py
+python src/app.py
 
 # 서버 주소: http://localhost:8080
 ```
@@ -56,10 +56,10 @@ brew install wireshark
 
 ```bash
 # RTCP 품질 분석
-python rtcp_analyze.py pcaps/VoNR.pcap
+python src/rtcp_analyze.py pcaps/VoNR.pcap
 
 # SA 세션 분석
-python sa_session_analyze.py pcaps/SA_regi.pcap
+python src/sa_session_analyze.py pcaps/SA_regi.pcap
 ```
 
 ## 파일 크기 제한

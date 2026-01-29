@@ -34,11 +34,7 @@ COPY requirements.txt .
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 # 애플리케이션 파일 복사
-COPY app.py .
-COPY converters.py .
-COPY parsers.py .
-COPY message_types.py .
-COPY utils.py .
+COPY src/ src/
 COPY templates/ templates/
 COPY wireshark/ wireshark/
 
@@ -57,4 +53,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
     CMD python3 -c "import requests; requests.get('http://localhost:8080')" || exit 1
 
 # Flask 애플리케이션 실행
-CMD ["python3", "app.py"]
+CMD ["python3", "src/app.py"]

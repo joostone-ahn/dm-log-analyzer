@@ -1,15 +1,22 @@
 import os
+import sys
 from flask import Flask, render_template, request, jsonify
 from werkzeug.utils import secure_filename
 
-# 모듈 임포트
-from converters import check_dependencies, convert_to_pcap, convert_pcap_to_json
-from parsers import parse_call_flow
+# 프로젝트 루트 디렉토리를 Python 경로에 추가
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, project_root)
 
-app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = 'uploads'
-app.config['PCAP_FOLDER'] = 'pcaps'
-app.config['JSON_FOLDER'] = 'jsons'
+# 모듈 임포트
+from src.converters import check_dependencies, convert_to_pcap, convert_pcap_to_json
+from src.parsers import parse_call_flow
+
+# Flask 앱 생성 (templates 폴더 경로 지정)
+app = Flask(__name__, 
+            template_folder=os.path.join(project_root, 'templates'))
+app.config['UPLOAD_FOLDER'] = os.path.join(project_root, 'uploads')
+app.config['PCAP_FOLDER'] = os.path.join(project_root, 'pcaps')
+app.config['JSON_FOLDER'] = os.path.join(project_root, 'jsons')
 app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024 * 1024  # 2GB
 
 # 필요한 디렉토리 생성
