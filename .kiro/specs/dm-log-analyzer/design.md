@@ -35,14 +35,14 @@ Browser Visualization
 ### 1.3 디렉토리 구조
 ```
 .
-├── app.py                      # Flask 웹 서버 (라우트만)
-├── converters.py               # 파일 변환 로직 (scat, tshark)
-├── parsers.py                  # 프로토콜 파싱 로직 (RRC/NAS)
-├── message_types.py            # 3GPP 메시지 타입 매핑
-├── utils.py                    # 유틸리티 함수
-├── rtcp_analyze.py             # RTCP 품질 분석
-├── sa_session_analyze.py       # SA 세션 분석
-├── requirements.txt            # Python 의존성
+├── src/                        # 소스 코드
+│   ├── app.py                 # Flask 웹 서버 (라우트만)
+│   ├── converters.py          # 파일 변환 로직 (scat, tshark)
+│   ├── parsers.py             # 프로토콜 파싱 로직 (RRC/NAS)
+│   ├── message_types.py       # 3GPP 메시지 타입 매핑
+│   ├── utils.py               # 유틸리티 함수
+│   ├── rtcp_analyze.py        # RTCP 품질 분석
+│   └── sa_session_analyze.py  # SA 세션 분석
 ├── templates/
 │   └── index.html             # 프론트엔드 UI
 ├── debug/                     # 디버그 및 테스트 스크립트
@@ -57,17 +57,19 @@ Browser Visualization
 ├── jsons/                     # 파싱된 JSON
 ├── wireshark/
 │   └── scat.lua              # Wireshark Lua 플러그인
-└── specs/                     # 3GPP 표준 문서
+├── requirements.txt           # Python 의존성
+├── Dockerfile                 # Docker 이미지 정의
+└── .dockerignore              # Docker 빌드 제외 파일
 ```
 
 ### 1.4 모듈 구조
 ```
-app.py (Flask 라우트)
-  ├─ converters.py (파일 변환)
-  │   └─ utils.py (유틸리티)
-  └─ parsers.py (프로토콜 파싱)
-      ├─ message_types.py (메시지 타입 매핑)
-      └─ utils.py (유틸리티)
+src/app.py (Flask 라우트)
+  ├─ src/converters.py (파일 변환)
+  │   └─ src/utils.py (유틸리티)
+  └─ src/parsers.py (프로토콜 파싱)
+      ├─ src/message_types.py (메시지 타입 매핑)
+      └─ src/utils.py (유틸리티)
 ```
 
 ---
@@ -78,10 +80,10 @@ app.py (Flask 라우트)
 
 프로젝트는 기능별로 모듈화되어 있습니다:
 
-#### 2.1.1 app.py (Flask 라우트)
+#### 2.1.1 src/app.py (Flask 라우트)
 ```python
-from converters import check_dependencies, convert_to_pcap, convert_pcap_to_json
-from parsers import parse_call_flow
+from src.converters import check_dependencies, convert_to_pcap, convert_pcap_to_json
+from src.parsers import parse_call_flow
 
 @app.route('/')
 def index():
@@ -97,14 +99,14 @@ def upload_file():
     return jsonify({'success': True, 'flows': flows})
 ```
 
-#### 2.1.2 converters.py (파일 변환)
+#### 2.1.2 src/converters.py (파일 변환)
 ```python
 def check_dependencies()
 def convert_to_pcap(input_path, pcap_path)
 def convert_pcap_to_json(pcap_path, json_path)
 ```
 
-#### 2.1.3 parsers.py (프로토콜 파싱)
+#### 2.1.3 src/parsers.py (프로토콜 파싱)
 ```python
 def extract_message_info(layers)
 def determine_direction_and_nodes(layers)
@@ -115,13 +117,13 @@ def extract_sib_info(system_info_element)
 def parse_call_flow(json_path)
 ```
 
-#### 2.1.4 message_types.py (메시지 타입 매핑)
+#### 2.1.4 src/message_types.py (메시지 타입 매핑)
 ```python
 def get_nas_5gs_message_name(msg_type)
 def get_nas_eps_message_name(msg_type)
 ```
 
-#### 2.1.5 utils.py (유틸리티)
+#### 2.1.5 src/utils.py (유틸리티)
 ```python
 def parse_json_with_duplicate_keys(json_str)
 def format_timestamp(timestamp_full)

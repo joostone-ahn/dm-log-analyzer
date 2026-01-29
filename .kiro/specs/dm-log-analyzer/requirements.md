@@ -240,6 +240,31 @@ DM(Diagnostic Monitor) 로그 파일을 파싱하여 LTE/NR RRC 및 EPS/5GS NAS 
 
 ## 5. 최근 업데이트
 
+### v1.2.2 (2026-01-29)
+**Docker 환경 NR RRC 파싱 문제 해결 및 GitHub Container Registry 배포**
+
+**문제**: Docker 환경에서 NR RRC 메시지가 파싱되지 않는 문제 발견
+- 로컬 환경: 302개 메시지 파싱
+- Docker 환경: 254개 메시지 파싱 (48개 누락)
+- 원인: scat Lua 플러그인이 임시 디렉토리에서 로드되지 않음
+
+**해결**:
+- Lua 플러그인을 Wireshark 전역 디렉토리에 설치 (`/usr/lib/x86_64-linux-gnu/wireshark/plugins/`)
+- `converters.py`에서 전역 플러그인 경로 사용하도록 수정
+- AMD64 단일 플랫폼 빌드로 변경 (멀티플랫폼 빌드 시간 문제 해결)
+- `docker-compose.yml` 제거 (사용자에게 불필요)
+- README 사용자 중심으로 재구성 (개발자 가이드 제거)
+
+**GitHub Container Registry 배포**:
+- `ghcr.io/joostone-ahn/dm-log-analyzer:latest` 이미지 제공
+- 사용자가 직접 빌드 없이 이미지 pull하여 즉시 사용 가능
+- Apple Silicon에서 `--platform linux/amd64` 옵션으로 실행 (Rosetta 2 에뮬레이션)
+
+**영향**:
+- Docker 환경에서 302개 메시지 정상 파싱 (로컬과 동일)
+- 사용자 배포 간소화 (docker run 명령어 하나로 실행)
+- 크로스 플랫폼 지원 (Windows x64, macOS Intel/Apple Silicon, Linux)
+
 ### v1.2.0 (2026-01-28)
 **모듈화 리팩토링 및 Docker 배포**
 
@@ -248,27 +273,25 @@ DM(Diagnostic Monitor) 로그 파일을 파싱하여 LTE/NR RRC 및 EPS/5GS NAS 
 - 코드 가독성 저하 및 테스트 어려움
 
 **해결**:
-- 기능별로 모듈 분리
-  - `converters.py`: 파일 변환 로직 (scat, tshark)
-  - `parsers.py`: 프로토콜 파싱 로직 (RRC/NAS)
-  - `message_types.py`: 3GPP 메시지 타입 매핑
-  - `utils.py`: 유틸리티 함수
-  - `app.py`: Flask 라우트만 (90줄)
+- 기능별로 모듈 분리 (src 폴더로 이동)
+  - `src/converters.py`: 파일 변환 로직 (scat, tshark)
+  - `src/parsers.py`: 프로토콜 파싱 로직 (RRC/NAS)
+  - `src/message_types.py`: 3GPP 메시지 타입 매핑
+  - `src/utils.py`: 유틸리티 함수
+  - `src/app.py`: Flask 라우트만 (90줄)
+  - `src/rtcp_analyze.py`: RTCP 품질 분석 스크립트
+  - `src/sa_session_analyze.py`: SA 세션 분석 스크립트
 - 각 모듈에서 필요한 함수만 import
 - debug 폴더 생성하여 디버그/테스트 스크립트 분리
 
 **Docker 배포 추가**:
 - Windows, macOS, Linux 크로스 플랫폼 지원
 - `Dockerfile`: Ubuntu 22.04 베이스, Python 3, tshark, scat 설치
-- `docker-compose.yml`: 컨테이너 오케스트레이션, 볼륨 마운트
 - `.dockerignore`: 불필요한 파일 제외
-- `README.Docker.md`: 완전한 배포 가이드 (핵심 기능, 설치, 사용법, 문제 해결, FAQ)
-- `deploy.sh`, `deploy.bat`: 자동 배포 스크립트 (Linux/macOS, Windows)
 - **주요 특징**:
   - Docker 컨테이너는 Linux 환경이므로 Linux용 scat이 Windows에서도 작동
   - scat 없이도 PCAP 파일 직접 업로드 가능
   - 데이터 영구 저장 (볼륨 마운트)
-  - 자동 재시작 정책
 
 **영향**:
 - 코드 가독성 향상
